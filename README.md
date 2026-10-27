@@ -1,62 +1,60 @@
 # covtl-lambda
 
-**L'effet d'assimilation articulatoire λ sur les doubles consonnes (C1C2 → C1′C2), obtenu par une modification du modèle COVTL — livré comme un patch installable sur [covtl-pipeline](https://github.com/fberthommier/covtl-pipeline) et un ensemble de démonstrations interactives.**
+**The λ articulatory-assimilation effect on tautosyllabic consonant clusters (C1C2 → C1′C2), obtained by a modification of the COVTL model — shipped as an installable patch for [covtl-pipeline](https://github.com/fberthommier/covtl-pipeline) plus a set of interactive demonstrations.**
 
 `patch v1.2.0` · GPL-3.0-or-later · 53 tests
 
-> covtl-lambda **n'est pas une copie de covtl-pipeline** : ce dépôt ne
-> contient aucun code du moteur. Il fournit (1) un patch installable
-> dans un checkout covtl-pipeline, (2) des démonstrations
-> autonome pré-synthétisées, consultables sans le moteur. Une console
-> web (covtl-console) sera ajoutée ultérieurement.
+> covtl-lambda **is not a copy of covtl-pipeline**: this repository
+> carries no engine code. It provides (1) a patch installed into a
+> covtl-pipeline checkout and (2) self-contained, pre-synthesized
+> demonstrations that play without the engine. A web console
+> (covtl-console) will be added later.
 
-**Contenu en trois temps :** [1. Lire les manuels](#1-lire-les-manuels) · [2. Visualiser les démonstrations](#2-visualiser-les-démonstrations) · [3. Installer covtl-pipeline et son patch](#3-installer-covtl-pipeline-et-son-patch-en-dernier)
+**Contents in three steps:** [1. Read the manuals](#1-read-the-manuals) · [2. Watch the demos](#2-watch-the-demos) · [3. Install covtl-pipeline and its patch](#3-install-covtl-pipeline-and-its-patch-last)
 
 ---
 
-## 1. Lire les manuels
+## 1. Read the manuals
 
-| Document | Contenu |
+| Document | Content |
 |---|---|
-| **[Manuel de référence (PDF, 14 p.)](docs/manual.pdf)** | la sémantique λ complète : §2.1 définition sur les cibles polaires, §4 CLI, §5 API Python, §6 continuum de référence pas à pas, §7 garanties et tests, §8 limites |
-| [Rapport d'analyse (EN, PDF)](docs/covtl_lambda_C1C2_report.pdf) | formalisation (ρ, θ), invariance de C2, dérive causale de C1, valeurs mesurées |
-| [Rapport d'analyse (FR, PDF)](docs/rapport_lambda_C1C2.pdf) | la même analyse en français, avec l'implication causale pour les sondages de réseaux de neurones (Wav2Vec2) |
-| [CHANGELOG](CHANGELOG.md) | historique v1.0 → v1.2.0 (la correction sémantique) |
-| [NOTICE — provenance & contributeurs](NOTICE.md) | trois niveaux de provenance, système d'import des données, licences |
+| **[Reference manual (PDF, 14 pp.)](docs/manual.pdf)** | the complete λ semantics: §2.1 definition on polar targets, §4 CLI, §5 Python API, §6 step-by-step reference continuum, §7 guarantees and tests, §8 limitations |
+| [Analysis report (PDF)](docs/covtl_lambda_C1C2_report.pdf) | (ρ, θ) formalization, C2 invariance, causal drift of C1, measured values |
+| [CHANGELOG](CHANGELOG.md) | history v1.0 → v1.2.0 (the semantic fix) |
+| [NOTICE — provenance & contributors](NOTICE.md) | three-level provenance, data import system, licenses |
 
-L'essentiel en une équation — pour la nasale C1 d'une double
-consonne tautosyllabique, avec C2 l'attaque de la même double :
+The essentials in one equation — for the nasal C1 of a tautosyllabic
+cluster, with C2 the onset of the same cluster:
 
-<p align="center"><code>θ_C1(λ) = θ_C1 + λ · wrap(θ_C2 − θ_C1)&nbsp;&nbsp;&nbsp;(ρ optionnel)</code></p>
+<p align="center"><code>θ_C1(λ) = θ_C1 + λ · wrap(θ_C2 − θ_C1)&nbsp;&nbsp;&nbsp;(ρ optional)</code></p>
 
-À λ = 0 la synthèse est strictement C1C2 ; à λ = 1 la cible polaire de
-C1 **égale** les coordonnées de la cible C2 (C1′C2, la double
-assimilée) — C2 ne bouge jamais, le bloc glottal (voisement, F0,
-nasalité) est constant au bit près sur tout le continuum. Les formes
-pointées `C.C` (ex. `klin.pan`) sont une synthèse différente, **hors
-périmètre**.
+At λ = 0 the synthesis is strictly C1C2; at λ = 1 the polar target of
+C1 **equals** the C2 target coordinates (C1′C2, the assimilated
+cluster) — C2 never moves, and the glottal block (voicing, F0,
+nasality) is bitwise constant along the whole continuum. Dotted forms
+`C.C` (e.g. `klin.pan`) are a different synthesis and are **out of
+scope**.
 
-## 2. Visualiser les démonstrations
+## 2. Watch the demos
 
-Les démos sont des fichiers HTML **autonomes** : audio, figures et
-trajectoires polaires y sont embarqués à la construction (système
-d'import décrit dans le [NOTICE](NOTICE.md)) — aucun serveur, aucun
-moteur, fonctionne hors ligne. Depuis GitHub, ouvrez un lien puis
-**Raw** (ou téléchargement) pour la vue interactive ; avec GitHub
-Pages activé, elles se lisent directement à
+The demos are **self-contained** HTML files: audio, figures and polar
+trajectories are embedded at build time (the import system is
+described in the [NOTICE](NOTICE.md)) — no server, no engine, works
+offline. From GitHub, open a link then use **Raw** (or download) for
+the interactive view; with GitHub Pages enabled they play in place at
 `https://<org>.github.io/covtl-lambda/demos/…`.
 
-**Exemple travaillé (K3) :** [demos/lambda_demo.html](demos/lambda_demo.html) —
-`klinkan → klimkan`, glisseur λ (9 pas), figure polaire avec le nœud
-de commande C1 tournant vers la cible C2 /k/ **fixe**, audio par λ,
-tableau d'articulateurs.
+**Worked example (K3):** [demos/lambda_demo.html](demos/lambda_demo.html) —
+`klinkan → klimkan`, λ slider (9 steps), polar planning figure with
+the C1 control node rotating toward the **fixed** C2 /k/ target,
+audio per λ, articulator readout.
 
-**Réplication des items de Pouw et al. (2024)** — six cadres de
-phrases, chacun un continuum λ confiné re-synthétisé (locuteur jd3) ;
-*licensed* = l'assimilation n → m devant labiale est licite,
-*unlicensed* = elle ne l'est pas :
+**Replication of the Pouw et al. (2024) items** — six sentence
+frames, each a confined-λ continuum re-synthesized (speaker jd3);
+*licensed* = the n → m assimilation before a labial is phonologically
+licit, *unlicensed* = it is not:
 
-| Page | Cadre | Paire | C2 | Licence |
+| Page | Frame | Pair | C2 | Licensing |
 |---|---|---|---|---|
 | [pouw_P1](demos/pouw/pouw_P1.html) | *clean pan* | `klinpan → klimpan` | /p/ | licensed |
 | [pouw_P2](demos/pouw/pouw_P2.html) | *mean boat* | `minbot → mimbot` | /b/ | licensed |
@@ -64,77 +62,75 @@ phrases, chacun un continuum λ confiné re-synthétisé (locuteur jd3) ;
 | [pouw_NV1](demos/pouw/pouw_NV1.html) | *clean tan* | `klintan → klimtan` | /t/ | unlicensed |
 | [pouw_NV3](demos/pouw/pouw_NV3.html) | *clean can* | `klinkan → klimkan` | /k/ | unlicensed |
 | [pouw_NV4](demos/pouw/pouw_NV4.html) | *mean goat* | `mingot → mimgot` | /g/ | unlicensed |
-| [index](demos/pouw/index.html) | — | vue d'ensemble des six cadres | — | — |
+| [index](demos/pouw/index.html) | — | overview of the six frames | — | — |
 
-Dans chaque démo : touches `←`/`→` pour λ ±0,125, `espace` lecture de
-l'état courant. Le pied de page enregistre la fenêtre C1 (frames,
-400 Hz) re-dérivée du timing phonémique `.polar` et la garantie de
-localité `outside_c1_arcs_bitwise_canon`.
+In every demo: keys `←`/`→` move λ by ±0.125, `space` plays the
+current state. The footer records the C1 window (frames, 400 Hz),
+re-derived from the `.polar` phoneme timing, and the locality
+guarantee `outside_c1_arcs_bitwise_canon`.
 
-## 3. Installer covtl-pipeline et son patch (en dernier)
+## 3. Install covtl-pipeline and its patch (last)
 
-Les manuels et les démos suffisent pour comprendre et montrer l'effet.
-Pour **produire** vos propres continiums, il faut le moteur :
+The manuals and demos are enough to understand and show the effect.
+To **produce** your own continua, you need the engine:
 
-1. **Cloner et installer covtl-pipeline** (non inclus ici) :
+1. **Clone and install covtl-pipeline** (not included here):
    ```bash
    git clone https://github.com/fberthommier/covtl-pipeline
    pip install -e covtl-pipeline[plot,dev]
    ```
-2. **Appliquer le patch** depuis ce dépôt :
+2. **Apply the patch** from this repository:
    ```bash
-   python patch/apply_patch.py --pipeline-root /chemin/vers/covtl-pipeline
+   python patch/apply_patch.py --pipeline-root /path/to/covtl-pipeline
    ```
-   Il installe `vtl_synth/core/morphing.py`, `vtl_synth/cli/morph_cmd.py`
-   et `tests/test_morphing.py` (53 tests). Le dépôt du moteur ne
-   porte **jamais** de code λ — `patch/revert_patch.py` restaure
-   l'état d'origine.
-3. **Vérifier** :
+   It installs `vtl_synth/core/morphing.py`,
+   `vtl_synth/cli/morph_cmd.py` and `tests/test_morphing.py` (53
+   tests). The engine repository never carries λ code —
+   `patch/revert_patch.py` restores the original state.
+3. **Verify**:
    ```bash
    python -m pytest tests/test_morphing.py -q        # 53 passed
    vtl-synth morph --phonetic --targets klinpan -o morph_out --label P1
    ```
 
-Le guide pas à pas avec sorties attendues et dépannage :
+The step-by-step guide with expected outputs and troubleshooting:
 [covtl-lambda-patch_INSTALL_PROMPT.md](covtl-lambda-patch_INSTALL_PROMPT.md).
-Un changement de moteur non couvert se manifeste d'abord par l'échec
-des tests de non-régression du patch.
+An uncovered engine change surfaces first as a failure of the patch's
+non-regression tests.
 
-### Écriture SAMPA : la garde et les non-mots anglais
+### SAMPA spelling: the guard and English non-words
 
-L'analyseur phonétique du moteur supprime silencieusement (désormais :
-avec **avertissement** de la garde SAMPA fusionnée en amont) les
-caractères hors de son inventaire. Écrire `cleanpan` ne lit donc pas
-« clean + pan » : le `c` disparaît et le moteur synthétise
-**`leanpan`** — un autre mot, sans le /k/. D'où la règle : écrire
-chaque phone avec son symbole SAMPA, sans reporter l'orthographe
-anglaise — les paires s'écrivent **`klinpan` / `klimpan`**
-(et `klintan/klimtan`, `klinkan/klimkan`, `minbot/mimbot`,
-`Tinpakit/Timpakit`, `mingot/mimgot`). Le workflow de
-[examples/](examples/) vérifie systématiquement l'inventaire phonémique
-attendu avant synthèse.
+The engine's phonetic parser silently drops (now: with a **warning**
+from the SAMPA guard merged upstream) characters outside its
+inventory. Spelling `cleanpan` does not read "clean + pan": the `c`
+disappears and the engine synthesizes **`leanpan`** — a different
+word, without the /k/. Hence the rule: spell each phone with its
+SAMPA symbol, never carry English orthography over — the pairs are
+written **`klinpan` / `klimpan`** (and `klintan/klimtan`,
+`klinkan/klimkan`, `minbot/mimbot`, `Tinpakit/Timpakit`,
+`mingot/mimgot`). The workflow in [examples/](examples/) verifies the
+expected phoneme inventory systematically before synthesis.
 
-## Layout du dépôt
+## Repository layout
 
 ```
-docs/             manuel de référence (tex + PDF), rapports EN/FR, figures
-demos/            démonstrations HTML autonomes (données embarquées)
-patch/            le patch du moteur : apply / revert / fichiers installés
-examples/         drivers Python des continua de référence + générateurs des démos
-covtl-lambda-patch_INSTALL_PROMPT.md   guide d'installation/vérification
+docs/             reference manual (tex + PDF), analysis report, figures
+demos/            self-contained HTML demos (embedded data)
+patch/            the engine patch: apply / revert / installed files
+examples/         Python drivers for the reference continua + demo generators
+covtl-lambda-patch_INSTALL_PROMPT.md   install/verify guide
 ```
 
-*Une console web (covtl-console) sera ajoutée ultérieurement.*
+*A web console (covtl-console) will be added later.*
 
-## Licence et contributeurs
+## License and contributors
 
-Code, documentation et payloads des démos : **GPL-3.0-or-later** —
-voir [LICENSE](LICENSE) et [NOTICE.md](NOTICE.md) (obligation de lien
-avec le moteur GPL ; liste des contributeurs ; système d'import des
-données : tout est synthétisé localement, aucune donnée tierce
-redistribuée).
+Code, documentation and demo payloads: **GPL-3.0-or-later** — see
+[LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) (the GPL engine-linking
+obligation; the contributor list; the data import system: everything
+is synthesized locally, no third-party data redistributed).
 
-## Référence
+## Reference
 
 C. Pouw, M. de Heer Kloots, A. Alishahi, W. Zuidema. *Perception of
 phonological assimilation by neural speech recognition models.*

@@ -8,8 +8,7 @@ source + compiled PDF, plus the cover source and the figure script.
 | `manual.pdf` | Reference manual (14 pages): motivation and provenance, the morphing model (v1.2.0 target semantic on the tautosyllabic CC cluster + the blend option: interpolation rule, frame-alignment contract, glottis policy, guarantees), patch procedure (apply/revert internals), CLI reference, Python API reference, the worked assimilation continuum with figure walkthroughs, test inventory (53), limitations and extensions, references. |
 | `manual.tex` | LaTeX source of the manual body (starts at the table of contents; the cover is generated separately and merged). |
 | `cover.html` / `cover.pdf` | Cover page (HTML source + rendered vector PDF). |
-| `covtl_lambda_C1C2_report.pdf` / `.tex` | Theoretical synthesis (English): the nature of the λ parameter (polar targets of the cluster branch) and C2 invariance. |
-| `rapport_lambda_C1C2.pdf` / `.tex` | Same theoretical synthesis, French. |
+| `covtl_lambda_C1C2_report.pdf` / `.tex` | Theoretical synthesis: the nature of the λ parameter (polar targets of the cluster branch) and C2 invariance. |
 | `figures/fig_continuum_data.png` | Data figure of §6: JA/TTX time series across the P1 target continuum + articulatory ground truth vs lambda. |
 | `figures/make_figures.py` | Regenerates the figure from the output of `examples/lambda_continuum.py`. |
 
