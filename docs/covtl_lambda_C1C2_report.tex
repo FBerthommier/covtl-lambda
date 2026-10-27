@@ -1,0 +1,189 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+% Color palette
+\definecolor{primary}{RGB}{24, 43, 73}      % Dark Navy
+\definecolor{secondary}{RGB}{180, 83, 9}    % Amber / Warm Accent
+\definecolor{accent}{RGB}{37, 99, 235}      % Blue Accent
+\definecolor{bglight}{RGB}{248, 250, 252}   % Light slate background
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    citecolor=secondary,
+    urlcolor=accent,
+    pdftitle={Mechanistic Analysis of covtl-pipeline: The Nature of Lambda and C1C2 Trajectories},
+    pdfauthor={Gemini Notebook}
+}
+
+% Tcolorbox setup
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{summarybox}[1][]{
+    colback=bglight,
+    colframe=primary,
+    coltitle=white,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3pt,
+    boxrule=1pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt,
+    breakable
+}
+
+\newtcolorbox{keyinsight}[1][]{
+    colback=bglight,
+    colframe=secondary,
+    fonttitle=\bfseries,
+    coltitle=white,
+    title=#1,
+    arc=3pt,
+    boxrule=1pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt,
+    breakable
+}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small \textcolor{gray}{\textbf{Articulatory Modeling \& Speech Recognition}}}
+\rhead{\small \textcolor{gray}{\textbf{Analysis of the \texttt{covtl-pipeline} model}}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Title styling
+\title{\vspace{-1cm}
+\Huge \textbf{\textcolor{primary}{Continuous Articulatory Modeling and Causal Control in \texttt{covtl-pipeline}}}\\
+\Large \vspace{0.3cm} \textcolor{secondary}{The Nature of the $\lambda$ Parameter, CC-Branch Extension, and $C_2$ Invariance in $C_1 C_2$ Sequences}
+}
+\author{\textbf{Technical--Theoretical Synthesis} \\ Neural Speech Recognition \& Articulatory Synthesis}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent This report formalizes the internal mechanics of the \texttt{covtl-pipeline} articulatory synthesis module (driving \textit{VocalTractLab}) as applied to the study of representations in vocal neural networks (notably Wav2Vec2). It rigorously addresses two fundamental questions:
+(1) \textbf{The nature of the $\lambda$ parameter}: $\lambda$ is not a simple weighting or a \textit{cross-fade} between two discrete physical states, but corresponds to a continuous vector displacement in the polar control space $(\rho, \theta)$ of the consonant branch (CC), coupled with an extension of the organ selector to the union $S_{\text{union}} = S_n \cup S_m$.
+(2) \textbf{The dynamics of $C_1 C_2$ sequences}: In a consonant cluster $C_1 C_2$, the contextual consonant $C_2$ remains strictly invariant in position $(\rho_{C2}, \theta_{C2})$ and timing, while only the control node of the target consonant $C_1$ undergoes a continuous causal drift. This asymmetry guarantees perfect causal isolation of the input signal.
+\end{abstract}
+
+\vspace{0.3cm}
+
+\section{Introduction and Theoretical Framework}
+
+The analysis of place-assimilation processing (e.g., \textit{clean pan} pronounced ``~clea[m] pan~'') by automatic speech recognition (ASR) models rests on the confrontation between natural human speech and synthesized speech. Whereas natural human speech carries confounded variables (coarticulatory micro-cues, prosody, word-frequency biases), articulatory synthesis via \texttt{covtl-pipeline} offers a \textbf{direct instrument of causal intervention}.
+
+To model the gradual transition from a canonical alveolar consonant $/n/$ to an assimilated bilabial $[m]$, the experiments rely on a continuum controlled by a parameter $\lambda \in [0, 1]$. The purpose of this document is to formalize the physical and computational reality underlying this parameter $\lambda$, and to analyze the behavior of consonant sequences $C_1 C_2$.
+
+\section{The Nature of the $\lambda$ Parameter: Polar Space $(\rho, \theta)$ and Selector Union}
+
+\subsection{Beyond the two-state weighting model}
+A naive conception of assimilation synthesis would treat $\lambda$ as a simple acoustic ``cross-fade'' or a weighted mixture of two pre-existing audio signals. This interpretation is inaccurate. The \texttt{covtl-pipeline} model performs no signal mixing; instead, it carries out a \textbf{dynamic re-allocation within the motor control space of the vocal tract}.
+
+\subsection{Representation in the CC-branch polar plane}
+In the \texttt{covtl} articulatory control model, the consonant branch (CC) of a \textbf{tautosyllabic cluster} defines each consonant target as a complex position $z_c = \rho e^{i\theta}$ in a polar coordination plane.  For the reference pair \textit{clean pan} written as the cluster \texttt{klinpan} (k-l-i-n-p-a-n; the dotless form --- a syllable dot is a C.C split, a different gesture structure, out of scope of the $\lambda$ variation):
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Canonical target $/n/$ (nasal coda of the cluster)}: $z_c^{[n]} = (\rho = 1.15,\, \theta = 270^\circ)$ --- the engine's cluster rule gives the cluster nasal the stop-like alveolar target.
+    \item \textbf{Context target $C_2 = /p/$ (onset of the cluster, fixed)}: $z_c^{[p]} = (\rho = 1.06,\, \theta = 50^\circ)$.
+\end{itemize}
+
+The parameter $\lambda$ moves the \textbf{$\theta$ coordinate of the $C_1$ target toward the $\theta$ of the $C_2$ target} along the shortest angular path ($\Delta\theta = +140^\circ$ here), with the $\rho$ channel optional:
+\begin{equation}
+\theta_{C1}(\lambda) = \theta_{C1} + \lambda \,\operatorname{wrap}_{(-\pi,\pi]}\!\left(\theta_{C2} - \theta_{C1}\right),
+\qquad \rho_{C1}(\lambda) = (1-\lambda)\,\rho_{C1} + \lambda\,\rho_{C2} \;(\text{optional})
+\end{equation}
+
+\noindent At $\lambda = 0$ the cluster target is strictly $C_1C_2$; at $\lambda = 1$ the $C_1$ polar target has reached the $C_2$ target coordinates ($\theta$ exactly; $\rho$ too when enabled) --- $C_1'C_2$: the $C_1$ gesture now \emph{points at} the $C_2$ target, while $C_2$ itself never moves. At $\lambda = 0.5$ with the default ($\theta$-only) channel, the control node sits at $(\rho = 1.15,\, \theta = 340^\circ)$, mid-way along the angular path.
+
+\subsection{The cluster selector union ($S_{\text{union}}$)}
+The cluster machinery of the engine drives, on every sub-arc of the cluster, the \textbf{union of the consonant selectors}:
+\begin{itemize}[leftmargin=*]
+    \item Lingual selector of $/n/$: $S_n = \{\text{JA, TCX, TCY, TBX, TBY, TTX, TTY}\}$.
+    \item Labial selector of $/p/$: $S_p = \{\text{JA, LD, LP}\}$.
+    \item \textbf{Cluster selector}: $S_{\text{union}} = S_n \cup S_p = \{\text{JA, TCX, TCY, TBX, TBY, TTX, TTY, LD, LP}\}$.
+\end{itemize}
+
+This machinery is part of the engine and is \emph{independent of $\lambda$}: the variation only moves the target coordinates of $C_1$ inside it ($C_1$ keeps its nasal identity --- selector and nasality envelope --- while its target rotates toward the $C_2$ place). For every value of $\lambda$ the trajectory is rebuilt and the full set of 19 anatomical parameters of the vocal tract is recomputed frame by frame (at a rate of $400\text{ Hz}$).
+
+\begin{summarybox}[Summary: What $\lambda$ physically represents]
+The $\lambda$ parameter rotates the polar target of the nasal $C_1$ toward the place of $C_2$ inside the fixed cluster machinery ($S_{\text{union}}$). At $\lambda = 0.5$ (reference pair \texttt{klinpan}), the system does not superimpose two sounds; it synthesizes a single hybrid gesture --- a nasalized approximant whose target sits mid-way along the angular path ($\theta = 340^\circ$): the tongue body is already rotating labial-ward (measured at the C1-window midpoint: jaw $-2.29^\circ$ against $-2.32^\circ$ canonical, tongue-tip $x$ $4.23$ cm against $4.78$ cm) while the velum stays wide open.
+\end{summarybox}
+
+\subsection{Levels of description: polar coordination model vs.\ tract-parameter realization}
+The polar $(\rho, \theta)$ formulation is the \emph{ground truth} of the $\lambda$ variation (v1.2.0 of covtl-lambda-patch): \texttt{vtl-synth morph --targets <cluster>} interpolates the $C_1$ polar target and re-synthesizes through the engine's own syllabic builder, so every continuum point is a genuine re-synthesized cluster. The older \emph{motor-level} realization --- frame-wise linear interpolation of the 19 tract parameters, $X_\lambda = (1-\lambda)A + \lambda B$ between two endpoint sequences --- remains available as the blend option; it approximates the target-level definition and was the only mode of the original kit experiment (which synthesized \emph{dotted} C.C forms and blended them; its recorded mid-window articulator values LP $0.214 \to 0.742$, LD $0.600 \to 0.113$, JA $-2.638 \to -3.309$, VO $0.848$ belong to that legacy path). Under the cluster target semantic the measured reference values are: JA $-2.321 \to -3.327$, VO $0.886$ constant, LP/LD carried by the vowel background at the mid-arc probe (tongue-tip and jaw carry the place change; cf.\ the patch manual §6).
+
+\section{$C_1 C_2$ Sequences: $C_2$ Invariance and Causal Drift of $C_1$}
+
+\subsection{Formalizing consonant pairs}
+When studying a consonant sequence $C_1 C_2$ in a regressive assimilation context (\textit{clean pan}, where $C_1 = \text{/n/}$ and $C_2 = \text{/p/}$, or \textit{clean tan}, where $C_1 = \text{/n/}$ and $C_2 = \text{/t/}$, realized on the engine as the tautosyllabic clusters \textit{klinpan} / \textit{klintan}), the control trajectory of the CC branch is constructed according to a strict asymmetry.
+
+\subsection{Invariance of the contextual consonant $C_2$}
+The consonant $C_2$ serves as the phonological trigger or control context. In the \texttt{covtl} pipeline, \textbf{the geometric position $(\rho_{C2}, \theta_{C2})$ and the timing of $C_2$ are strictly invariant} (verified bitwise at every $\lambda$ by the \texttt{outside\_c1\_arcs\_bitwise\_canon} check):
+\begin{itemize}[leftmargin=*]
+    \item For \textit{clean pan} ($C_2 = \text{/p/}$): Bilabial target fixed at $(\rho = 1.06,\, \theta = 50^\circ)$.
+    \item For \textit{clean tan} ($C_2 = \text{/t/}$): Alveolar target fixed at $(\rho = 1.20,\, \theta = -75^\circ)$ (engine cluster rule for \texttt{klintan}).
+\end{itemize}
+
+\subsection{Exclusive causal drift of $C_1$}
+Only the target of the nasal consonant $C_1$ varies as a function of $\lambda$:
+\begin{equation}
+\theta_{C1}^{(\lambda)} = \theta_{[n]} + \lambda \,\operatorname{wrap}\!\left(\theta_{C2} - \theta_{[n]}\right)
+\end{equation}
+
+\begin{table}[h]
+\centering
+\caption{Evolution of $C_1$ and $C_2$ parameters along the $\lambda$ continuum (reference cluster \texttt{klinpan}; $\theta$-only channel, the default)}
+\vspace{0.2cm}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{$\lambda$ regime} & \textbf{$C_1$ target in $(\rho, \theta)$} & \textbf{$C_2$ position (\textit{pan})} & \textbf{Nature of the $C_1$ gesture} & \textbf{Assimilation regime} \\
+\midrule
+$\lambda = 0.00$ & $(1.15,\, 270^\circ)$ & $(1.06,\, 50^\circ)$ & Stop-like alveolar nasal & Canonical form /n/ \\
+$\lambda = 0.50$ & $(1.15,\, 340^\circ)$ & $(1.06,\, 50^\circ)$ & Nasalized approximant & Hybrid / ambiguous gesture \\
+$\lambda = 0.75$ & $(1.15,\, 15^\circ)$ & $(1.06,\, 50^\circ)$ & Near-labial nasal & Partial assimilation \\
+$\lambda = 1.00$ & $(1.15,\, 50^\circ)$ & $(1.06,\, 50^\circ)$ & Labial-pointing nasal closure & Target sharing ($\theta$; $\rho$ too with the rho channel) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Consequences for experimental control}
+This asymmetry guarantees that the physical modification applied to the $C_1$ segment is \textbf{strictly identical at both the acoustic and articulatory levels}, whether the following consonant $C_2$ is a $/p/$ (viable context) or a $/t/$ (non-viable context).
+
+\begin{keyinsight}[Major Causal Implication]
+By construction, the audio signal modifying $C_1$ carries no information about the context $C_2$. If the neural network (Wav2Vec2) were to react differently between viable and non-viable contexts on this purely synthetic signal, it would unambiguously demonstrate the existence of a context-sensitive phonological licensing rule within the network.
+\end{keyinsight}
+
+\section{Implications for Cognitive Modeling and Neural Networks}
+
+Simulations conducted on this synthetic continuum for several values of $\lambda$ ($\lambda \in \{1.0,\, 0.75,\, 0.625\}$) yield a fundamental result for the interpretation of the Wav2Vec2 model:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Absence of a viability asymmetry}: At every value of $\lambda$, the behavioral compensation rate and the internal probability of the underlying form $P(n)$ remain \textbf{strictly equivalent} in the viable context (\textit{clean pan}) and in the non-viable context (\textit{clean tan}).
+    \item \textbf{Demonstrating the nature of the encoder}: The Wav2Vec2 encoder (CNN layers through T6) acts as a \textbf{bottom-up acoustic detector}. It possesses no autonomous abstract phonological grammar.
+    \item \textbf{Explaining the effect in human speech}: The asymmetric compensation measured on human speech in the study by Pouw et al.\ (2024) stems solely from the presence of \textbf{physical coarticulatory micro-cues} in the human voice and from the \textbf{orthographic statistics of the CTC decoder} (layers T10 through T12).
+\end{enumerate}
+
+\section{Conclusion}
+
+The formalization of the \texttt{covtl-pipeline} module demonstrates the high degree of experimental rigor offered by articulatory synthesis:
+1. The $\lambda$ parameter is a \textbf{continuous rotation of the $C_1$ polar target toward the $C_2$ target} in the polar space $(\rho, \theta)$ of the tautosyllabic cluster ($\theta$ always, $\rho$ optionally), inside the engine's fixed cluster machinery (selector union $S_{\text{union}}$); at $\lambda = 1$ the $C_1$ target equals the $C_2$ target coordinates. Each $\lambda$ is a genuine re-synthesized cluster (the frame-wise tract-parameter blend of the legacy kit experiment remains available as its motor-level approximation).
+2. In a $C_1 C_2$ sequence, the manipulation is \textbf{strictly localized on $C_1$}, keeping $C_2$ and the whole context bitwise invariant.
+
+This experimental framework makes it possible to definitively dissociate direct acoustic sensitivity from supervised orthographic correction in speech-processing architectures.
+
+\end{document}

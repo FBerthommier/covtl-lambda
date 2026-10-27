@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Tests / tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Patch application artifacts (backups written next to the target file)
+*.lambda-morph.bak
+
+# Experiment outputs
+morph_out/
+lambda_out/
+morph_basic/
+out/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.xdv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated demo pages (canonical copies ship in demos/)
+examples/html/*.html
+examples/html/pouw/
+examples/html/_payload/
