@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """KIT30 step 12 -- Pouw-style 3-condition statistics, lambda=0.75
 production experiment, v3.0 (revised target-level cluster continuum).

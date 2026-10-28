@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """KIT30 step 13 -- lambda=0.625 production statistics + 9-degree
 dose-response, v3.0 (revised target-level cluster continuum).

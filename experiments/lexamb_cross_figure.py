@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """figN6 -- crossing with the natural stimuli released by Pouw et al.
 

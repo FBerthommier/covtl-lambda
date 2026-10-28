@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Probe the 54 lambda-continuum items of the campaign (covtl-lambda
 v1.2.0) with the unchanged nasal probe instrument trained on the

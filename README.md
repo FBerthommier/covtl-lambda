@@ -2,7 +2,7 @@
 
 **The λ articulatory-assimilation effect on tautosyllabic consonant clusters (C1C2 → C1′C2), obtained by a modification of the COVTL model — shipped as an installable patch for [covtl-pipeline](https://github.com/fberthommier/covtl-pipeline) plus a set of interactive demonstrations.**
 
-`patch v1.2.0` · GPL-3.0-or-later · 53 tests
+`patch v1.2.0` · GPL-3.0-or-later · 53 tests · [Architecture](docs/ARCHITECTURE.md) · [License](LICENSE.md)
 
 > covtl-lambda **is not a copy of covtl-pipeline**: this repository
 > carries no engine code. It provides (1) a patch installed into a
@@ -127,12 +127,32 @@ covtl-lambda-patch_INSTALL_PROMPT.md   install/verify guide
 
 *A web console (covtl-console) will be added later.*
 
+## Architecture in one paragraph
+
+covtl-lambda is a set of **independent modules with one-way data flow**
+— no module imports another; they communicate only through files
+([full map](docs/ARCHITECTURE.md)). The patch installs the λ semantic
+into a covtl-pipeline checkout; the synthesis artifacts (`.tract`,
+`.wav`, `morph_meta.json`) flow to the demo generators, which embed
+them into the self-contained pages of `demos/` (no engine at run
+time); the external probing campaign consumed the same artifacts and
+its outputs entered `results/` only after the verification gate
+(bitwise synthesis identity, guarantee booleans, notation sweep).
+Invariants: the engine repo never carries λ code; the demos work
+offline; every external result is hash-pinned and citation-complete
+(COVTL model + VocalTractLab + the reproduced Pouw protocol).
+
 ## License and contributors
 
-Code, documentation and demo payloads: **GPL-3.0-or-later** — see
-[LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) (the GPL engine-linking
-obligation; the contributor list; the data import system: everything
-is synthesized locally, no third-party data redistributed).
+Code, documentation and demo payloads: **GPL-3.0-or-later** —
+[LICENSE](LICENSE) (full text), [LICENSE.md](LICENSE.md) (per-module
+application, adopted three-level form), [NOTICE.md](NOTICE.md)
+(provenance chain, the data import system, contributor list). Every
+code file carries an `SPDX-License-Identifier` header. Scientific use
+of the stimuli or results must cite the COVTL publications
+(F. Berthommier), **VocalTractLab 2.4 (P. Birkholz)** — the
+synthesizer that produced every audio file — and the Pouw et al.
+(2024) protocol being reproduced.
 
 ## Reference
 

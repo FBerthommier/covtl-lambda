@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """figN3 -- Pouw et al. (2024) Figure 1 schema, reproduced with the
 lambda=0.75 PRODUCTION experiment (the focused reproduction attempt).

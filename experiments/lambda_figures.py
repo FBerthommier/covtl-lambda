@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """KIT30 step 22 -- the two lambda-continuum figures of the synthesis
 document, regenerated for the v3.0 (target-level cluster) continuum.

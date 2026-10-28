@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Build the lambda-continuum campaign on the REVISED reference model
 (covtl-lambda v1.2.0, target-level C1C2 semantic on tautosyllabic

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Digitize Pouw Figure 2 (top band only): bars + tick calibration.
 
@@ -75,7 +77,7 @@ for y in rows[1:]:
         groups.append(cur)
         cur = [y]
 groups.append(cur)
-print("--- étiquettes d'axe (lignes de texte à gauche):")
+print("--- axis tick labels (text lines on the left):")
 ticks = []
 for gr in groups:
     y0, y1 = gr[0], gr[-1]

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """KIT30 step 11 -- note statistics v3.0: the three anchor conditions of
 the REVISED (target-level, cluster) assimilation continuum, for the six

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """figN2 -- reproduction of Pouw et al. (2024) Figure 1, extended with the
 lambda-continuum probing experiment of this kit.

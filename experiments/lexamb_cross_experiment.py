@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Crossing experiment: our synthetic-continuum protocol applied to the
 NATURAL stimuli released by Pouw et al. (their re-recording of the

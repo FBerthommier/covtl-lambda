@@ -6,6 +6,15 @@ scripts are **engine-side reproducible locally only up to synthesis**:
 the probing stages need the wav2vec2 checkpoints and are run by the
 external campaign (see ROADMAP W1/W3).
 
+**Synthesis chain**: all audio produced by these scripts comes from
+covtl-pipeline — the COVTL articulatory model (F. Berthommier)
+driving **VocalTractLab 2.4** (P. Birkholz,
+https://www.vocaltractlab.de). Any publication built on these
+stimuli must cite the COVTL publications, VocalTractLab, and the
+Pouw et al. (2024) protocol being reproduced; the natural stimuli of
+`fetch_lexamb.py` remain the property of their authors (fetch +
+verify + cite, never redistribute). See [NOTICE](../NOTICE.md).
+
 ## Layout
 
 The scripts resolve inputs/outputs relative to the kit root (the

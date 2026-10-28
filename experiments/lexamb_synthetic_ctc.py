@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 nasal_synthesis kit contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Synthetic-side CTC transcription measure (the missing cell of the
 natural-vs-synthetic crossing): transcribe the lambda-continuum

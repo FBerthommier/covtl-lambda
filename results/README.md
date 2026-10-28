@@ -54,6 +54,20 @@ they are regenerable bit-exactly with the patch
 the SHA-256 hashes in `synth_meta.json`. The full kit (with the legacy
 motor-blend tiers) remains the external artifact `nasal_synthesis_kit_v3.0.zip`.
 
+## Synthesis chain and citations
+
+Every stimulus in this campaign was produced by the chain documented
+in [NOTICE](../NOTICE.md): the COVTL articulatory model
+(F. Berthommier) computes the polar targets and syllabic trajectories
+in covtl-pipeline, and **VocalTractLab 2.4** (P. Birkholz,
+https://www.vocaltractlab.de) performs the synthesis. The didactic
+synthesis PDF cites both (plus Pouw et al. 2024 and the COVTL
+publications) in its references. **Scientific use of these results
+must cite the COVTL publications, VocalTractLab (Birkholz), and the
+Pouw et al. study whose protocol is reproduced.** No VocalTractLab
+component (binaries, speaker definitions, API bindings) is included
+in this repository.
+
 ## Headline scientific result (from CORRECTIONS_v3.0)
 
 No positive licensed-over-unlicensed asymmetry appears at any of the
