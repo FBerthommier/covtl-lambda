@@ -1,80 +1,61 @@
 # ROADMAP — Reproducing the Pouw et al. (2024) results in this repository
 
-Status: **active workstream, awaiting the external recomputation.**
+Status: **W1 delivered and verified; results integrated (2026-10-28).**
 This document records the reproduction approach announced by the
 analysis report ([covtl_lambda_C1C2_report.pdf](covtl_lambda_C1C2_report.pdf))
-and organizes its transport into this repository. Nothing here is
-shipped yet: the Wav2Vec2 results **cannot be recomputed locally**
-(no probing layer in the local environment), and the recomputation
-has been entrusted to an external agent.
+and organizes its transport into this repository.
 
 ## Context and cleanup of the provenance chain
 
 - The historical reproducibility base lived in the local
   `nasal_synthesis` reproducibility kit (v2.1): synthesis + probing
   scripts, natural-stimuli import, figures and statistics.
-- The external agent is **recomputing the entire Wav2Vec2 study with
-  this repository (github.com/FBerthommier/covtl-lambda) as the
-  reference** for the synthesis side. When that revision arrives, the
-  kit's position is superseded: this repository becomes the citable
-  source, and the kit's results must be **re-validated against it**
-  before integration.
+- The external agent **recomputed the entire Wav2Vec2 study with this
+  repository as the synthesis reference** and delivered
+  `nasal_synthesis_kit_v3.0.zip` (2026-10-28). The kit's position is
+  superseded: this repository is now the citable source, and the
+  verified campaign artifacts live in [results/](../results/README.md)
+  with the driving scripts in [experiments/](../experiments/README.md).
 
 ## Workstreams
 
-### W1 — External recomputation of the Wav2Vec2 results (in progress, external)
+### W1 — External recomputation of the Wav2Vec2 results ✅ DELIVERED & VERIFIED
 
-The probing layer (wav2vec2-base / wav2vec2-base-960h over the λ
-continua; linear probes on hidden states L0–L12; CTC transcription
-measures) is recomputed by the external agent on the target-mode
-continua produced by patch v1.2.0. Deliverable: a revised
-`nasal_synthesis`-style package whose synthesis side is exactly the
-one documented in this repository (target semantic, cluster windows,
-`morph_meta.json` guarantees). **Gate:** every probing input must be
-traceable to a `morph_meta.json` record of this repository.
+Delivered as kit v3.0: one 54-item campaign (6 frames × 9 λ) on the
+target-mode continua, stage-1 probe instrument unchanged, production
+blocks as byte-identical slices. Verification record:
+[results/README.md](../results/README.md).
 
-### W2 — Natural-stimuli import (to reactivate)
+### W2 — Natural-stimuli import ✅ INTEGRATED (scripts)
 
-The former patch project included importing the **natural speech
-signals** of the reference line: the 86 natural sentences released by
-Pouw et al. 2024 (their re-recording of the Gaskell & Marslen-Wilson
-2001 lexical-ambiguity materials), fetched with per-file checksum
-verification — kit script `repro/fetch_lexamb.py` — and the
-natural-vs-synthetic crossing (`lexamb_cross_experiment.py`,
-`lexamb_synthetic_ctc.py`, digitized Pouw Figure 2 via
-`lexamb_fig2_digitize.py`). The human compensation rates that anchor
-the reproduction come from **Darcy et al. (2009)**, as published in
-the Pouw et al. comparison; these are *published numbers read from
-the papers*, not redistributed recordings. Constraints carried over:
-Pouw audio is fetched from the authors' release with checksums and is
-**not redistributed** by this repository; the Pouw paper itself is
-never shipped (digitization happens from a local copy, see NOTICE
-Level 3).
+The import path lives in [experiments/fetch_lexamb.py](../experiments/fetch_lexamb.py)
+with its checksum manifest (`lexamb_checksums.json`), plus the
+natural-vs-synthetic crossing scripts. The 86 natural sentences of
+Pouw et al. 2024 are fetched from the authors' release with per-file
+checksum verification and are **not redistributed**; the Darcy et al.
+(2009) human anchor is read from published numbers.
 
-### W3 — Transport of the reproduction protocol and results (after W1)
+### W3 — Transport of the reproduction protocol and results ✅ DELIVERED (as-received), rewrite pending
 
-Port into `experiments/` (planned layout):
-`pouw075/0625_experiment.py` (Pouw Figure-1 protocol at production
-degrees λ = 0.75 / 0.625, confined protocol), `note_stats.py`
-(three anchor conditions λ = 0/0.5/1.0), `run_probing.py` and
-`extract_features.py` (probing drivers, with the torch/transformers
-extra made optional), `figures.py`/`note_figure.py` (publication
-figures). Each script lands updated to: (a) drive the synthesis
-through `vtl-synth morph --targets` (patch v1.2.0 target semantic)
-instead of the kit's dotted-era calls; (b) read the C1 windows from
-`morph_meta.json` rather than hard-coded frames; (c) state the
-VocalTractLab/COVTL citations (see NOTICE).
+Campaign results, figures and the (notation-corrected) synthesis PDF
+are integrated under [results/](../results/README.md); the driving
+scripts under [experiments/](../experiments/README.md) as received.
+**Remaining:** the ROADMAP W3 rewrite of the synthesis-side scripts —
+(a) drive synthesis through `vtl-synth morph --targets` (already the
+kit's campaign behavior), (b) read C1 windows from `morph_meta.json`
+in the analysis scripts still carrying hard-coded frames, (c) state
+the VocalTractLab/COVTL citations — tracked as follow-up commits.
 
-### W4 — Integrity verification at integration time
+### W4 — Integrity verification at integration time ✅ PASSED (2026-10-28)
 
-When the revised package arrives: (1) re-verify that its continua are
-bitwise the ones of this repository (tract SHA-256 against the
-`morph_meta.json` records, as the kit already did for its P1
-continuum); (2) re-run the guarantee checks (`lam0_bitwise_canon`,
-`glottis_bitwise_constant`, `lam1_theta_equals_c2`,
-`outside_c1_arcs_bitwise_canon`) on every shipped item; (3) confirm
-the phoneme inventories (SAMPA guard, dotless cluster notation);
-(4) only then merge results into this repository under `results/`.
+(1) 54/54 campaign tracts **numerically identical** to the repository
+reference continua (0 differing cells; the only byte difference is the
+tract-writer EOL convention, kit LF vs local CRLF); (2) the six
+`morph_meta` records carry 5/5 true guarantees each with per-λ
+`theta_c1`; (3) dotless cluster inventories confirmed (`klinpan`,
+`minbot`, `Tinpakit`, `klintan`, `klinkan`, `mingot`); (4) merged into
+[results/](../results/README.md). Full record:
+[results/README.md](../results/README.md).
 
 ### W5 — Documentary revision of the transition notation (standing)
 
@@ -102,9 +83,13 @@ being restated in diverging wording.
 **Baseline verification (2026-10-28, this commit)**: full sweep of
 the repository — zero dotted endpoints outside out-of-scope contexts,
 zero spaced forms, no diverging separator-semantics statements found.
-W5 remains a standing gate for W1's incoming revision: every document
-and result table of the revised package must pass the same sweep
-before integration (W4).
+W5 was applied to the incoming revision at integration: the kit's
+documents passed (the remaining spaced forms are the legitimate
+separator explainer), and the two dotted `\sampa{klin.pan}` example
+occurrences in the synthesis PDF source were corrected to the
+canonical ladder before the PDF was rebuilt into
+[results/](../results/README.md). W5 remains a standing gate for all
+future documents and result tables.
 
 ## Non-goals
 

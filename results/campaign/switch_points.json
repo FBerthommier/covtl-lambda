@@ -1,0 +1,2370 @@
+{
+ "w2v2_base960h": {
+  "P1": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 1.0,
+    "first_lambda_reaching_c2_class": 1.0,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "m"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 1.0,
+    "first_lambda_reaching_c2_class": 1.0,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "m"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "P2": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": 1.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   }
+  },
+  "P4": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "N",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.375,
+    "first_lambda_reaching_c2_class": 0.375,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   }
+  },
+  "NV1": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.875,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "m",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "NV3": {
+   "CNN": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "NV4": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "m",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "m",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "n",
+     "m",
+     "m",
+     "n",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m",
+     "m"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "m",
+     "m",
+     "n",
+     "m",
+     "m",
+     "m"
+    ]
+   }
+  }
+ },
+ "w2v2_base": {
+  "P1": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "m",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "P2": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "N"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "m",
+     "N"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "P4": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": 0.0,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "NV1": {
+   "CNN": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "NV3": {
+   "CNN": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": 0.25,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "m",
+     "n",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  },
+  "NV4": {
+   "CNN": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T1": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "m",
+     "m",
+     "n",
+     "m",
+     "m",
+     "n",
+     "n"
+    ]
+   },
+   "T2": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T3": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T4": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T5": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T6": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T7": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T8": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T9": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T10": {
+    "first_lambda_leaving_n": 0.0,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "m",
+     "m",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T11": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   },
+   "T12": {
+    "first_lambda_leaving_n": null,
+    "first_lambda_reaching_c2_class": null,
+    "argmax_path": [
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n",
+     "n"
+    ]
+   }
+  }
+ }
+}

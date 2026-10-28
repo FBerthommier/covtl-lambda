@@ -1,0 +1,142 @@
+{
+ "patch": "covtl-lambda-patch v1.2.0 (2026-10-26)",
+ "mode": "targets",
+ "semantic": "C1C2 -> C1'C2 on the tautosyllabic cluster: lambda moves the C1 polar target (theta) toward the C2 target; C2 and context stay bitwise canonical",
+ "label": "NV4",
+ "phrase": "mingot",
+ "sources": {
+  "canon_phrase": "mingot",
+  "endpoint_synth": "/home/z/my-project/work/lrev_campaign/base/NV4/_engine",
+  "sample_rate_hz": 400.0
+ },
+ "targets": {
+  "cluster_index": 1,
+  "c1": {
+   "key": "n",
+   "rho": 1.15,
+   "theta": 4.71238898038469
+  },
+  "c2": {
+   "key": "g",
+   "rho": 1.1,
+   "theta": -0.2617993877991494
+  },
+  "theta_delta": 1.3089969389957474,
+  "theta_delta_deg": 75.00000000000001,
+  "rho_enabled": false,
+  "c1_window_frames": {
+   "first": 192,
+   "last": 231
+  },
+  "c1_arcs_frames": {
+   "first": 192,
+   "last": 271
+  }
+ },
+ "engine": {
+  "speaker": "jd3",
+  "f0_hz": null,
+  "use_orthogonal": true,
+  "t_cons_ms": 100.0,
+  "t_voy_ms": 80.0,
+  "pause_short_ms": 200.0,
+  "pause_long_ms": 320.0
+ },
+ "lambdas": [
+  0.0,
+  0.125,
+  0.25,
+  0.375,
+  0.5,
+  0.625,
+  0.75,
+  0.875,
+  1.0
+ ],
+ "n_frames": 544,
+ "diff_extent_frames": {
+  "first_frame": 189,
+  "last_frame": 267
+ },
+ "checks": {
+  "lam0_bitwise_canon": true,
+  "glottis_bitwise_constant": true,
+  "lam1_theta_equals_c2": true,
+  "lam1_theta_equiv_c2_mod_2pi": true,
+  "outside_c1_arcs_bitwise_canon": true
+ },
+ "items": [
+  {
+   "lam": 0.0,
+   "theta_c1": 4.71238898038469,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.125,
+   "theta_c1": 4.876013597759158,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.125.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.125.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.25,
+   "theta_c1": 5.0396382151336265,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.25.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.25.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.375,
+   "theta_c1": 5.203262832508095,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.375.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.375.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.5,
+   "theta_c1": 5.366887449882563,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.5.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.5.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.625,
+   "theta_c1": 5.530512067257032,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.625.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.625.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.75,
+   "theta_c1": 5.6941366846315,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.75.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.75.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 0.875,
+   "theta_c1": 5.857761302005969,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.875.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l0.875.wav",
+   "n_frames": 544
+  },
+  {
+   "lam": 1.0,
+   "theta_c1": -0.2617993877991494,
+   "rho_c1": 1.15,
+   "tract": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l1.tract",
+   "wav": "/home/z/my-project/work/lrev_campaign/base/NV4/NV4_l1.wav",
+   "n_frames": 544
+  }
+ ]
+}

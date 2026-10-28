@@ -21,6 +21,7 @@
 | **[Reference manual (PDF, 14 pp.)](docs/manual.pdf)** | the complete λ semantics: §2.1 definition on polar targets, §4 CLI, §5 Python API, §6 step-by-step reference continuum, §7 guarantees and tests, §8 limitations |
 | [Analysis report (PDF)](docs/covtl_lambda_C1C2_report.pdf) | (ρ, θ) formalization, C2 invariance, causal drift of C1, measured values |
 | [CHANGELOG](CHANGELOG.md) | history v1.0 → v1.2.0 (the semantic fix) |
+| **[Results](results/README.md)** | the verified Wav2Vec2 probing campaign (kit v3.0): 54/54 stimuli bitwise-identical to this repo's synthesis, guarantee checks, the didactic synthesis PDF |
 | [ROADMAP](docs/ROADMAP.md) | the Pouw et al. (2024) reproduction workstream: external Wav2Vec2 recomputation, natural-stimuli import (Darcy et al. 2009 anchor), transport and integrity verification |
 | [NOTICE — provenance & contributors](NOTICE.md) | three-level provenance, data import system, licenses |
 
@@ -115,8 +116,10 @@ expected phoneme inventory systematically before synthesis.
 ## Repository layout
 
 ```
-docs/             reference manual (tex + PDF), analysis report, figures
+docs/             reference manual (tex + PDF), analysis report, figures, roadmap
 demos/            self-contained HTML demos (embedded data)
+results/          the verified Wav2Vec2 probing campaign (kit v3.0 artifacts)
+experiments/      probing-campaign scripts (probing extra optional)
 patch/            the engine patch: apply / revert / installed files
 examples/         Python drivers for the reference continua + demo generators
 covtl-lambda-patch_INSTALL_PROMPT.md   install/verify guide

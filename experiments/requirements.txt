@@ -1,0 +1,18 @@
+# Experiment kit for "Nasal Place Assimilation in wav2vec2:
+# A Didactic Synthesis" (Python >= 3.10).
+# Versions used for the reported results:
+#   torch 2.14 (CPU) / transformers 5.20 / matplotlib 3.9.2
+torch>=2.0
+transformers>=4.40
+scikit-learn>=1.3
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.8
+# The synthesis engine is installed separately (it wraps the
+# VocalTractLab binary backend):
+#   pip install -e covtl-pipeline        # vtl-synth 1.1.0
+#   python repro/patch_N.py              # 3-line /N/ velar-closure patch
+# v2.1: the lambda experiments additionally require the confined-morph
+# engine option (covtl-lambda-patch v1.1.0+, additive and reversible):
+#   python /path/to/covtl-lambda-patch/patch/apply_patch.py \
+#       --pipeline-root /path/to/covtl-pipeline

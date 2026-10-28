@@ -1,0 +1,200 @@
+{
+ "title": "Kit v2.1 (motor blend, C1-confined) vs v3.0 (target-level cluster, covtl-lambda v1.2.0)",
+ "semantic_change": {
+  "v21": "lam blends the 30-dim tract-parameter sequences of the DOTTED endpoints (klin.pan / klim.pan), confined to the C1 window with 25 ms raised-cosine ramps",
+  "v30": "lam moves the C1 polar TARGET on the tautosyllabic cluster (klinpan): theta_C1(lam) = theta_C1 + lam*wrap(theta_C2 - theta_C1); C2, context, glottis, lips and velum bitwise canonical",
+  "consequence": "the v2.1 lam=1 endpoint closed the lips inside the C1 window (surface /m/ acoustics); the v3.0 lam=1 endpoint reaches the C2 place COORDINATES with the labial closure still realized by C2 -- the assimilation is gestural, not a surface copy"
+ },
+ "conditions_075": {
+  "v21": {
+   "w2v2_base960h": {
+    "control": 0.7692307692307693,
+    "viable": 0.6153846153846154,
+    "unviable": 0.5897435897435898
+   },
+   "w2v2_base": {
+    "control": 0.9743589743589743,
+    "viable": 0.7435897435897436,
+    "unviable": 0.7435897435897436
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "control": 0.6410256410256411,
+    "viable": 0.7948717948717948,
+    "unviable": 0.8974358974358975
+   },
+   "w2v2_base": {
+    "control": 0.6153846153846154,
+    "viable": 0.9743589743589743,
+    "unviable": 0.9743589743589743
+   }
+  }
+ },
+ "conditions_0625": {
+  "v21": {
+   "w2v2_base960h": {
+    "control": 0.7692307692307693,
+    "viable": 0.7435897435897436,
+    "unviable": 0.8717948717948718
+   },
+   "w2v2_base": {
+    "control": 0.9743589743589743,
+    "viable": 0.9487179487179487,
+    "unviable": 0.9743589743589743
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "control": 0.6410256410256411,
+    "viable": 0.7948717948717948,
+    "unviable": 0.8974358974358975
+   },
+   "w2v2_base": {
+    "control": 0.6153846153846154,
+    "viable": 1.0,
+    "unviable": 0.9487179487179487
+   }
+  }
+ },
+ "asymmetry_075": {
+  "v21": {
+   "w2v2_base960h": {
+    "diff": 0.02564102564102566,
+    "ci_lo": -0.18390395381621816,
+    "ci_hi": 0.23207026377055762,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   },
+   "w2v2_base": {
+    "diff": 0.0,
+    "ci_lo": -0.19000201977389228,
+    "ci_hi": 0.19000201977389228,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "diff": -0.10256410256410264,
+    "ci_lo": -0.2650491403644362,
+    "ci_hi": 0.062427048654150635,
+    "fisher_p": 0.347100107512167,
+    "ci_excludes_zero": false
+   },
+   "w2v2_base": {
+    "diff": 0.0,
+    "ci_lo": -0.10824534106694444,
+    "ci_hi": 0.10824534106694444,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   }
+  }
+ },
+ "asymmetry_0625": {
+  "v21": {
+   "w2v2_base960h": {
+    "diff": -0.1282051282051282,
+    "ci_lo": -0.2986481359243983,
+    "ci_hi": 0.04938829492489785,
+    "fisher_p": 0.25012628015790156,
+    "ci_excludes_zero": false
+   },
+   "w2v2_base": {
+    "diff": -0.02564102564102566,
+    "ci_lo": -0.14509374100885733,
+    "ci_hi": 0.08682472106309623,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "diff": -0.10256410256410264,
+    "ci_lo": -0.2650491403644362,
+    "ci_hi": 0.062427048654150635,
+    "fisher_p": 0.347100107512167,
+    "ci_excludes_zero": false
+   },
+   "w2v2_base": {
+    "diff": 0.05128205128205132,
+    "ci_lo": -0.0457584484644907,
+    "ci_hi": 0.1688564005143205,
+    "fisher_p": 0.4935064935064936,
+    "ci_excludes_zero": false
+   }
+  }
+ },
+ "asymmetry_lam1": {
+  "v21": {
+   "w2v2_base960h": {
+    "diff": -0.025641025641025647,
+    "ci_lo": -0.15726655748229673,
+    "ci_hi": 0.10228656540621332,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   },
+   "w2v2_base": {
+    "diff": 0.02564102564102564,
+    "ci_lo": -0.06647503306776867,
+    "ci_hi": 0.13180990173634152,
+    "fisher_p": 1.0,
+    "ci_excludes_zero": false
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "diff": -0.23076923076923084,
+    "ci_lo": -0.39945007352485595,
+    "ci_hi": -0.04670752932317637,
+    "fisher_p": 0.026340124643180245,
+    "ci_excludes_zero": true
+   },
+   "w2v2_base": {
+    "diff": -0.10256410256410253,
+    "ci_lo": -0.23578854466741883,
+    "ci_hi": 0.0064223412442780264,
+    "fisher_p": 0.11532467532467534,
+    "ci_excludes_zero": false
+   }
+  }
+ },
+ "continuum_t4_boundary": {
+  "v21": {
+   "w2v2_base960h": {
+    "P1": 0.9078486577326099,
+    "NV1": 0.7445854177822122
+   },
+   "w2v2_base": {
+    "P1": 0.8347314822621341,
+    "NV1": 0.7344664895194069
+   }
+  },
+  "v30": {
+   "w2v2_base960h": {
+    "P1": ">1",
+    "P2": ">1",
+    "P4": ">1",
+    "NV1": ">1",
+    "NV3": ">1",
+    "NV4": ">1"
+   },
+   "w2v2_base": {
+    "P1": ">1",
+    "P2": "<0",
+    "P4": ">1",
+    "NV1": ">1",
+    "NV3": ">1",
+    "NV4": "<0"
+   }
+  }
+ },
+ "verdict_totals": {
+  "v21_note": "18-item 2-frame continuum, T4 crossings at lam* ~ 0.7-0.9 (late boundary)",
+  "v30_note": "54-item 6-frame continuum, T4 crossings: none ('>1' everywhere except two '<0' edges) -- the phonetic layers hold /n/ over the whole sweep"
+ },
+ "control_condition_semantics": {
+  "v21": "lam=0 = dotted canonical (klin.pan) re-synthesis; compensation control 76.9 / 61.5 %",
+  "v30": "lam=0 = canonical CLUSTER (klinpan), bitwise identical to the canonical synthesis; compensation control 64.1 / 61.5 % -- the cluster nasal is coarticulation-rich (m-ish at the early layers), a property of natural clusters that the dotted citation form lacks"
+ }
+}
