@@ -76,6 +76,36 @@ continuum); (2) re-run the guarantee checks (`lam0_bitwise_canon`,
 the phoneme inventories (SAMPA guard, dotless cluster notation);
 (4) only then merge results into this repository under `results/`.
 
+### W5 — Documentary revision of the transition notation (standing)
+
+The major historical error was notational confusion about the
+transition states. The **canonical ladder**, as fixed by the v1.2.0
+semantic and to be enforced across every document and demo:
+
+| Notation | Meaning | Status |
+|---|---|---|
+| `xC1 C2x` | space separator = prosodic pause (200 ms short / 320 ms long) — two separate words | legal, but a **different synthesis**; never a λ endpoint |
+| `xC1.C2x` | dot separator = C.C split, no pause — different cluster/gesture machinery | legal engine input, **out of scope** of the λ variation; a dotted input to `morph --targets` is rejected |
+| `xC1C2x` | no separator = tautosyllabic CC cluster (C1 nasal coda + C2 onset) | the **only** legitimate λ input |
+| `xC1′C2x` | λ = 1 endpoint: C1 polar target reached the C2 target coordinates | the assimilated state; never written `C1.C2` or `C1 C2` |
+
+Rules enforced in every document, demo and result table: (a) λ
+endpoints are always written dotless (`klinpan → klimpan`); (b)
+dotted/spaced forms appear only inside explicit out-of-scope,
+legacy or warning statements; (c) the SAMPA guard caveat
+(`clinpan` → engine drops `c`, write `klinpan`) accompanies any
+discussion of English orthography; (d) separator semantics (space =
+pause, dot = C.C split, none = cluster) are stated once, in the
+notation keybox of the manual, and referenced elsewhere instead of
+being restated in diverging wording.
+
+**Baseline verification (2026-10-28, this commit)**: full sweep of
+the repository — zero dotted endpoints outside out-of-scope contexts,
+zero spaced forms, no diverging separator-semantics statements found.
+W5 remains a standing gate for W1's incoming revision: every document
+and result table of the revised package must pass the same sweep
+before integration (W4).
+
 ## Non-goals
 
 - No probing dependencies (torch, transformers) enter this
