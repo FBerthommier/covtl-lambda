@@ -45,7 +45,7 @@ probing agent as `nasal_synthesis_kit_v3.0.zip` (2026-10-28) and
 | `revision_comparison_v30.json` | machine-readable v2.1→v3.0 comparison (asymmetries, verdict flips) |
 | `campaign/*.json` | stage-1 probe instrument (LOSO), margins, switch points |
 | `figures/` | the shipped figures (λ heatmaps, boundary curves, Pouw schema reproduction, lexamb crossing, PCA, classification map) |
-| `nasal_place_assimilation_synthesis.pdf` / `.tex` | the 20-page didactic synthesis (notation-corrected build; cover merged in the kit's own copy, this is the body build) |
+| `nasal_place_assimilation_synthesis.pdf` / `.tex` | the 21-page didactic synthesis (notation-corrected body rebuilt and re-merged with the kit cover page; the `.tex` is the corrected body source) |
 | `note_three_condition_statistics.pdf` | the companion statistics note |
 
 The 54 `.tract`/`.wav` stimulus files are **not** redistributed here —
