@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Build the probing sentence base: synthesize all items with vtl-synth.
+    Synthesis chain: the COVTL articulatory model (F. Berthommier)
+    in covtl-pipeline driving VocalTractLab 2.4 (P. Birkholz,
+    https://www.vocaltractlab.de) - cite both for scientific use.
 
 Outputs per item (into <KIT_ROOT>/work/base/<label>/):
   <label>.wav   44.1 kHz audio (both variants of a pair have identical

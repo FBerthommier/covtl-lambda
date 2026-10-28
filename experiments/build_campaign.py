@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Build the lambda-continuum campaign on the REVISED reference model
+    Synthesis chain: the COVTL articulatory model (F. Berthommier)
+    in covtl-pipeline driving VocalTractLab 2.4 (P. Birkholz,
+    https://www.vocaltractlab.de) - cite both for scientific use.
 (covtl-lambda v1.2.0, target-level C1C2 semantic on tautosyllabic
 clusters): for each of the six Pouw frames, the 9-step lambda
 continuum (0, .125, ..., 1) of the canonical cluster phrase,

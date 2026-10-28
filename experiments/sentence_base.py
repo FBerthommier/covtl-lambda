@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #!/usr/bin/env python3
 """Sentence base for the wav2vec2 probing study (English, engine SAMPA).
+    Synthesis chain: the COVTL articulatory model (F. Berthommier)
+    in covtl-pipeline driving VocalTractLab 2.4 (P. Birkholz,
+    https://www.vocaltractlab.de) - cite both for scientific use.
 
 Design: place assimilation in English, TIMIT-style two-word sentences.
 - Pairs (viable): canonical vs assimilated, same phoneme count => the two

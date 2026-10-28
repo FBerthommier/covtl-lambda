@@ -43,8 +43,10 @@ The demos are **self-contained** HTML files: audio, figures and polar
 trajectories are embedded at build time (the import system is
 described in the [NOTICE](NOTICE.md)) — no server, no engine, works
 offline. From GitHub, open a link then use **Raw** (or download) for
-the interactive view; with GitHub Pages enabled they play in place at
-`https://<org>.github.io/covtl-lambda/demos/…`.
+the interactive view; once GitHub Pages is enabled (Settings → Pages →
+Deploy from a branch → `main` / `/ (root)`), they play in place at
+**https://fberthommier.github.io/covtl-lambda/demos/lambda_demo.html**
+and `…/demos/pouw/index.html`.
 
 **Worked example (K3):** [demos/lambda_demo.html](demos/lambda_demo.html) —
 `klinkan → klimkan`, λ slider (9 steps), polar planning figure with

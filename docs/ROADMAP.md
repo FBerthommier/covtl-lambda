@@ -35,16 +35,24 @@ Pouw et al. 2024 are fetched from the authors' release with per-file
 checksum verification and are **not redistributed**; the Darcy et al.
 (2009) human anchor is read from published numbers.
 
-### W3 — Transport of the reproduction protocol and results ✅ DELIVERED (as-received), rewrite pending
+### W3 — Transport of the reproduction protocol and results ✅ CLOSED (2026-10-28)
 
 Campaign results, figures and the (notation-corrected) synthesis PDF
 are integrated under [results/](../results/README.md); the driving
-scripts under [experiments/](../experiments/README.md) as received.
-**Remaining:** the ROADMAP W3 rewrite of the synthesis-side scripts —
-(a) drive synthesis through `vtl-synth morph --targets` (already the
-kit's campaign behavior), (b) read C1 windows from `morph_meta.json`
-in the analysis scripts still carrying hard-coded frames, (c) state
-the VocalTractLab/COVTL citations — tracked as follow-up commits.
+scripts under [experiments/](../experiments/README.md). The rewrite
+this item planned turned out to be **already done by the kit v3.0
+restructure**: synthesis runs through the target semantic
+(`build_campaign.py` calls `morph_targets` directly; `build_base.py`
+through `vtl-synth --phonetic`), and every consumer reads the C1
+windows from `morph_meta.json` (`c1_window_frames`), never from
+hard-coded frames — the old per-degree experiment scripts were
+replaced by the 54-item campaign with byte-identical production
+slices. **Functional validation**: 22/22 scripts compile;
+`make_results.py` re-run against the kit regenerates `results.json`
+and `synth_meta.json` with **0 differing leaves** vs the shipped
+copies; `pouw075_stats.py`/`pouw0625_stats.py` execute cleanly
+(exit 0, endpoint-distance stats saved). VocalTractLab attribution
+added to the audio-producing script docstrings.
 
 ### W4 — Integrity verification at integration time ✅ PASSED (2026-10-28)
 
