@@ -60,7 +60,17 @@ by the covtl-lambda contributors with the patched engine:
 1. **Source of the stimuli** — engine SAMPA words synthesized by
    covtl-pipeline (`vtl-synth` subcommands) with the default jd3
    speaker and gesture timings (100/80/200 ms); no recordings of
-   human speakers are used anywhere in this repository.
+   human speakers are used anywhere in this repository. The final
+   synthesizer is **VocalTractLab 2.4** (Peter Birkholz,
+   https://www.vocaltractlab.de): the engine's COVTL model computes
+   the polar targets and the syllabic trajectories, and VocalTractLab
+   produces the audio. Every demo page therefore carries an
+   attribution line crediting both; per the VocalTractLab citation
+   instructions, **scientific use of these stimuli must cite the
+   COVTL publications and VocalTractLab (Birkholz)**. No
+   VocalTractLab component (binaries, speaker definitions, API
+   bindings) is included in this repository — those live in the
+   covtl-pipeline checkout (see Level 2).
 2. **Import into the demos** — the generators
    (`examples/html/make_lambda_demo.py`, `examples/html/make_pouw_demos.py`)
    extract, per λ step: the AAC-encoded audio, the tract-parameter
