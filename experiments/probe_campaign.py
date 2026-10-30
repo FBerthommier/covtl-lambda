@@ -10,8 +10,13 @@ production degrees).
 Instruments (window = C1 phoneme window from the campaign manifest):
   1. classification: per lambda x layer -- class probabilities +
      argmax of the nasal probe (the note's verdicts)
-  2. the campaign extras (margins, switch points, timecourses) are
-     written alongside for the figures and the audit trail.
+  2. LOSO CV of the nasal and stop probes on the training sentences
+  3. centroid cosine margins (nasal probe)
+  4. switch points: per frame x model x layer, the smallest lambda
+     where the nasal-probe argmax leaves 'n' (and reaches the
+     C2-place class)
+  5. timecourses: per-frame nasal-probe probabilities around the C1
+     window for lambda in {0, .25, .5, .75, 1}
 
 Kit-portable: reads COVTL_KIT_ROOT/work/{base,features,lambda},
 writes COVTL_KIT_ROOT/work/lambda/{results.json,campaign/}.
@@ -70,9 +75,11 @@ def extract_campaign_features(campaign, feats_dir):
                     wav, sr, 16000).mean(dim=0)
                 wav = (wav - wav.mean()) / (wav.std() + 1e-9)
                 with torch.no_grad():
-                    hs = model(wav[None]).last_hidden_state[0]  # (T,13,768)
-                t_centers = (np.arange(hs.shape[0]) + 0.5) * 0.02
-                np.savez(dst, hs=hs.numpy().astype("float32"),
+                    out = model(wav[None], output_hidden_states=True)
+                    hs = np.stack([h[0].numpy() for h in out.hidden_states],
+                                  axis=0)  # (13, T, 768)
+                t_centers = (np.arange(hs.shape[1]) + 0.5) * 0.02
+                np.savez(dst, hs=hs.astype("float32"),
                          t_centers=t_centers)
                 n_done += 1
         del model
@@ -105,64 +112,115 @@ def main():
     train_items = [it for it in train_manifest["items"]
                    if it["group"] == "train"]
 
-    results = {"provenance": {
-        "probe": "nasal-place logistic probe on window means, training "
-                 "base = the original stage-1 base (instrument "
-                 "unchanged across kit versions)",
-        "window": "C1 phoneme window (from the campaign manifest)"}}
+    PROBES = {"nasal": NASAL, "stop": ["t", "p", "k"]}
+    TC_LAMBDAS = [0.0, 0.25, 0.5, 0.75, 1.0]
     probe_cv = {}
+    classification = {}
+    margins = {}
+    tc = {}
     for tag in MODELS:
         X = {}
         for it in train_items:
             z = load_npz(tag, it["label"])
             win = (it["t0_cs"] / 100.0, it["t1_cs"] / 100.0)
             X[it["label"]] = window_mean(z["hs"], z["t_centers"], win)
-        nasal_items = [it for it in train_items if it["target_key"] in NASAL]
-        cells = {}
-        cv = {}
-        for li, lname in enumerate(LAYERS):
-            Xtr = np.stack([X[it["label"]][li] for it in nasal_items])
-            ytr = [it["target_key"] for it in nasal_items]
-            clf = LogisticRegression(max_iter=5000, C=1.0)
-            clf.fit(Xtr, ytr)
-            # LOSO CV on the training sentences
-            correct = 0
-            for i in range(len(ytr)):
-                keep = [j for j in range(len(ytr)) if j != i]
-                same = [j for j in keep if ytr[j] == ytr[i]]
-                if not same:
-                    continue
-                lo = LogisticRegression(max_iter=5000, C=1.0)
-                lo.fit(Xtr[keep], [ytr[j] for j in keep])
-                correct += int(lo.predict(Xtr[i:i + 1])[0] == ytr[i])
-            cv[lname] = round(correct / len(ytr), 4)
-            for fr, it in citems:
-                lab = f"{fr['fid']}_l{it['lam']:g}"
-                z = np.load(os.path.join(feats_dir, tag, f"{lab}.npz"))
-                win = tuple(fr["c1_window_s"])
-                emb = window_mean(z["hs"], z["t_centers"], win)
-                p = clf.predict_proba(emb[li][None])[0]
-                cells.setdefault(lab, {})[lname] = {
-                    "N": float(p[list(clf.classes_).index("N")]),
-                    "m": float(p[list(clf.classes_).index("m")]),
-                    "n": float(p[list(clf.classes_).index("n")]),
-                    "argmax": clf.classes_[int(p.argmax())]}
-        probe_cv[tag] = cv
-        results.setdefault("nasal", {})[tag] = cells
-        print(f"[{tag}] LOSO:", {k: v for k, v in cv.items()
+        for pname, cls in PROBES.items():
+            labs = [it for it in train_items if it["target_key"] in cls]
+            cv = {}
+            for li, lname in enumerate(LAYERS):
+                Xtr = np.stack([X[it["label"]][li] for it in labs])
+                ytr = [it["target_key"] for it in labs]
+                # LOSO CV on the training sentences
+                correct = 0
+                for i in range(len(ytr)):
+                    keep = [j for j in range(len(ytr)) if j != i]
+                    same = [j for j in keep if ytr[j] == ytr[i]]
+                    if not same:
+                        continue
+                    lo = LogisticRegression(max_iter=5000, C=1.0)
+                    lo.fit(Xtr[keep], [ytr[j] for j in keep])
+                    correct += int(lo.predict(Xtr[i:i + 1])[0] == ytr[i])
+                cv[lname] = round(correct / len(ytr), 4)
+                if pname != "nasal":
+                    continue      # the nasal probe = the C1 instrument
+                clf = LogisticRegression(max_iter=5000, C=1.0)
+                clf.fit(Xtr, ytr)
+                cent = {c: Xtr[[i for i, y in enumerate(ytr)
+                               if y == c]].mean(axis=0) for c in cls}
+                for fr, it in citems:
+                    lab = f"{fr['fid']}_l{it['lam']:g}"
+                    z = np.load(os.path.join(feats_dir, tag,
+                                             f"{lab}.npz"))
+                    win = tuple(fr["c1_window_s"])
+                    emb = window_mean(z["hs"], z["t_centers"], win)
+                    p = clf.predict_proba(emb[li][None])[0]
+                    classification.setdefault(tag, {}).setdefault(
+                        lab, {})[lname] = {
+                        "N": round(float(p[list(clf.classes_).index("N")]), 4),
+                        "m": round(float(p[list(clf.classes_).index("m")]), 4),
+                        "n": round(float(p[list(clf.classes_).index("n")]), 4),
+                        "argmax": str(clf.classes_[int(p.argmax())])}
+                    v = emb[li]
+                    v = v / (np.linalg.norm(v) + 1e-9)
+                    d = {}
+                    for c in cls:
+                        u = cent[c] / (np.linalg.norm(cent[c]) + 1e-9)
+                        d[c] = round(float(1.0 - float(v @ u)), 4)
+                    margins.setdefault(tag, {}).setdefault(
+                        lab, {})[lname] = d
+                    if it["lam"] in TC_LAMBDAS:
+                        m = ((z["t_centers"] >= win[0] - 0.15)
+                             & (z["t_centers"] < win[1] + 0.15))
+                        hs_f = z["hs"][:, m, :]
+                        pf = clf.predict_proba(hs_f[li])
+                        key = f"{lab}|{lname}"
+                        tc[key] = pf.astype(np.float32)
+                        tc.setdefault("_" + key + "_t",
+                                      z["t_centers"][m].astype(np.float32))
+            probe_cv.setdefault(pname, {})[tag] = cv
+        print(f"[{tag}] LOSO:", {k: v for k, v in
+                                 probe_cv["nasal"][tag].items()
                                  if k in ("CNN", "T2", "T4", "T12")})
 
-    results["probe_cv_nasal"] = probe_cv
-    with open(os.path.join(OUT, "results.json.tmp"), "w") as f:
-        json.dump({"nasal": results["nasal"]}, f, indent=1)
-    # campaign instruments directory (classification + cv)
+    # campaign instruments directory
     os.makedirs(os.path.join(LAM, "campaign"), exist_ok=True)
     with open(os.path.join(LAM, "campaign", "campaign_probing.json"),
               "w") as f:
-        json.dump({"nasal": results["nasal"]}, f, indent=1)
+        json.dump({"nasal": classification,
+                   "stop": {t: {} for t in MODELS}}, f, indent=1)
     with open(os.path.join(LAM, "campaign", "probe_train.json"), "w") as f:
-        json.dump({"nasal": probe_cv}, f, indent=1)
-    os.remove(os.path.join(OUT, "results.json.tmp"))
+        json.dump(probe_cv, f, indent=1)
+    with open(os.path.join(LAM, "campaign", "margins.json"), "w") as f:
+        json.dump({"nasal": margins, "stop": {t: {} for t in MODELS}},
+                  f, indent=1)
+    np.savez_compressed(os.path.join(LAM, "campaign", "timecourses.npz"),
+                        **tc)
+
+    # switch points (nasal argmax paths along lambda)
+    sw = {}
+    for tag in MODELS:
+        sw[tag] = {}
+        for fr in campaign["frames"]:
+            fid = fr["fid"]
+            sw[tag][fid] = {}
+            for lname in LAYERS:
+                row = []
+                for it in fr["items"]:
+                    rec = classification[tag][f"{fid}_l{it['lam']:g}"][lname]
+                    row.append((it["lam"], rec["argmax"]))
+                first_leave = next((lam for lam, am in row
+                                    if am != "n"), None)
+                c2cls = {"p": "m", "b": "m", "t": "n",
+                         "k": "N", "g": "N"}[fr["c2_phone"]]
+                first_reach = next((lam for lam, am in row
+                                    if am == c2cls and c2cls != "n"),
+                                   None)
+                sw[tag][fid][lname] = {
+                    "first_lambda_leaving_n": first_leave,
+                    "first_lambda_reaching_c2_class": first_reach,
+                    "argmax_path": [am for _, am in row]}
+    with open(os.path.join(LAM, "campaign", "switch_points.json"), "w") as f:
+        json.dump(sw, f, indent=1)
     print(f"probing done -> {LAM}/campaign/")
 
 

@@ -12,7 +12,12 @@ matplotlib>=3.8
 # VocalTractLab binary backend):
 #   pip install -e covtl-pipeline        # vtl-synth 1.1.0
 #   python repro/patch_N.py              # 3-line /N/ velar-closure patch
-# v2.1: the lambda experiments additionally require the confined-morph
-# engine option (covtl-lambda-patch v1.1.0+, additive and reversible):
-#   python /path/to/covtl-lambda-patch/patch/apply_patch.py \
+# v3.1: the lambda experiments require the confined-morph engine
+# option -- covtl-lambda v1.2.0 (this repository, commit c13f4d0;
+# additive and reversible) -- plus the kit's additive full-selector
+# module repro/morphing_fullsel.py (kit v3.1).  The engine reference
+# tree is covtl-pipeline 1d15ed7 + the /N/ velar-closure patch
+# (patch_N.py) + covtl-corrections-patch v1.0.1:
+#   python /path/to/covtl-lambda/patch/apply_patch.py \
 #       --pipeline-root /path/to/covtl-pipeline
+#   python repro/patch_N.py
