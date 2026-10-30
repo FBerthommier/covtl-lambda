@@ -1,12 +1,13 @@
 {
  "patch": "covtl-lambda-patch v1.2.0 (2026-10-26)",
- "mode": "targets",
- "semantic": "C1C2 -> C1'C2 on the tautosyllabic cluster: lambda moves the C1 polar target (theta) toward the C2 target; C2 and context stay bitwise canonical",
+ "kit_extension": "nasal_synthesis kit v3.1 -- full-CC-selector extension of covtl-lambda v1.2.0 (2026-10-30)",
+ "mode": "targets-fullsel",
+ "semantic": "C1C2 -> C1'C2 on the tautosyllabic cluster with the WHOLE CC SELECTOR taken into account (kit v3.1): lambda moves the C1 polar target (theta) toward the C2 target exactly as in v1.2.0, and the C2-only selector parameters (e.g. the lips LD/LP of a labial C2) join the C1 gesture with weight lambda; at lambda = 0 the synthesis is bitwise canonical, at lambda = 1 the lips reach their full-selector labial realization",
  "label": "P2",
  "phrase": "minbot",
  "sources": {
   "canon_phrase": "minbot",
-  "endpoint_synth": "/home/z/my-project/work/lrev_campaign/base/P2/_engine",
+  "endpoint_synth": "/home/z/my-project/work/kit_v31/nasal_synthesis/work/lambda/_engine_P2/_engine",
   "sample_rate_hz": 400.0
  },
  "targets": {
@@ -33,14 +34,49 @@
    "last": 271
   }
  },
- "engine": {
-  "speaker": "jd3",
-  "f0_hz": null,
-  "use_orthogonal": true,
-  "t_cons_ms": 100.0,
-  "t_voy_ms": 80.0,
-  "pause_short_ms": 200.0,
-  "pause_long_ms": 320.0
+ "selectors": {
+  "c1": [
+   "JA",
+   "TCX",
+   "TCY",
+   "TTX",
+   "TTY",
+   "TBX",
+   "TBY"
+  ],
+  "c2": [
+   "JA",
+   "LP",
+   "LD"
+  ],
+  "union": [
+   "JA",
+   "LP",
+   "LD",
+   "TCX",
+   "TCY",
+   "TTX",
+   "TTY",
+   "TBX",
+   "TBY"
+  ],
+  "c2_only": [
+   "LP",
+   "LD"
+  ]
+ },
+ "fullsel": {
+  "condition": "full CC selector under lambda (kit v3.1): the C2-only selector parameters join the C1 gesture with weight lambda; jaw/tongue rotation bitwise identical to the v1.2.0 target morph",
+  "c2_only_params": [
+   "LP",
+   "LD"
+  ],
+  "c2_only_tract_indices": [
+   4,
+   5
+  ],
+  "blend": "P(lam) = (1-lam)*P[selector=C1] + lam*P[union CC selector], C2-only parameters, all frames (a no-op outside the C1-incident sub-arcs by locality)",
+  "union_equals_c1_selector": false
  },
  "lambdas": [
   0.0,
@@ -63,80 +99,9 @@
   "glottis_bitwise_constant": true,
   "lam1_theta_equals_c2": true,
   "lam1_theta_equiv_c2_mod_2pi": true,
-  "outside_c1_arcs_bitwise_canon": true
- },
- "items": [
-  {
-   "lam": 0.0,
-   "theta_c1": 4.71238898038469,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.125,
-   "theta_c1": 5.017821599483697,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.125.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.125.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.25,
-   "theta_c1": 5.323254218582705,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.25.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.25.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.375,
-   "theta_c1": 5.6286868376817125,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.375.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.375.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.5,
-   "theta_c1": 5.934119456780721,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.5.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.5.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.625,
-   "theta_c1": 6.239552075879728,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.625.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.625.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.75,
-   "theta_c1": 6.544984694978735,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.75.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.75.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 0.875,
-   "theta_c1": 6.850417314077744,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.875.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l0.875.wav",
-   "n_frames": 544
-  },
-  {
-   "lam": 1.0,
-   "theta_c1": 0.8726646259971648,
-   "rho_c1": 1.15,
-   "tract": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l1.tract",
-   "wav": "/home/z/my-project/work/lrev_campaign/base/P2/P2_l1.wav",
-   "n_frames": 544
-  }
- ]
+  "outside_c1_arcs_bitwise_canon": true,
+  "fullsel_confined_to_c1_arcs": true,
+  "fullsel_c2_only_recruited": true,
+  "fullsel_lam1_c2_only_equals_union": true
+ }
 }

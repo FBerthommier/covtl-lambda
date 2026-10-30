@@ -10,13 +10,8 @@
 
 % ---------- Fonts (XeTeX) ----------
 \usepackage{fontspec}
-% Liberation fonts are not installed on every build box; fall back
-% to Times-metric system fonts when missing (same policy as the
-% covtl-lambda manual).
-\IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}
-{\setmainfont{Times New Roman}}
-\IfFontExistsTF{Liberation Mono}{\setmonofont{Liberation Mono}}
-{\setmonofont{Consolas}}
+\setmainfont{Liberation Serif}
+\setmonofont{Liberation Mono}
 
 % ---------- Layout ----------
 \usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
@@ -116,17 +111,21 @@ mid-depth representations are conditioned by surrounding segments. A
 new experiment, reported here for the first time in this edition,
 rotates the polar \emph{target} of the C1 nasal of tautosyllabic
 clusters toward the C2 place in nine steps, on six frames---the
-reference model of the \texttt{covtl-lambda} repository (v1.2.0),
-under four run-time guarantees that hold C2, the context, the lips,
-the velum, and the glottis bitwise canonical---and probes every
+reference model of the \texttt{covtl-lambda} repository (v1.2.0)
+extended so that under $\lam$ the whole CC selector is taken into
+account, as in the base model (four run-time guarantees hold C2, the
+context, the velum and the glottis bitwise canonical, and the lips
+join the C1 gesture with weight $\lam$)---and probes every
 intermediate token: the phonetic layers hold the underlying /n/ at
 every degree of every frame (the category boundary of the earlier
-motor-blend editions no longer exists), what they track instead is the
-coarticulation of the canonical cluster and its cleanup under the
-velar rotation, and the licensed context exerts a unidirectional,
+motor-blend editions no longer exists, and it does not return even
+when the lips close), what they track instead is the coarticulation
+of the canonical cluster and its cleanup under the velar rotation,
+and the licensed context exerts a unidirectional,
 supervision-dependent labial reading in the deepest CTC layers---a
 nasal before a labial reads toward [m] regardless of the gesture,
-strongest on a frame that contains no /m/ segment at all. The
+strongest on a frame that contains no /m/ segment at all, and
+unchanged when the assimilated frame's own lips actually close. The
 cross-reference shows convergent, complementary, and occasionally
 divergent answers from the two paradigms, and motivates a two-stage
 account of assimilation processing in wav2vec2.
@@ -434,8 +433,8 @@ drives VocalTractLab~\citep{birkholz2013} through a polar control
 plane: each phoneme is a target point $z=\rho e^{i\theta}$ in a
 two-dimensional articulatory summary space that projects onto the
 19-parameter vocal-tract state, and phoneme identity is therefore a
-single point edit. Replacing the target \sampa{n} of \sampa{klinpan}
-(``clean pan'' tautosyllabic cluster) by \sampa{m} regenerates the consonantal branch
+single point edit. Replacing the target \sampa{n} of \sampa{klin.pan}
+(``clean pan'') by \sampa{m} regenerates the consonantal branch
 toward a labial closure while the vocalic branch, the phoneme
 boundaries, and the frame count are held identical; the engine's
 coarticulation logic does the rest, and the resulting pair is aligned
@@ -665,11 +664,17 @@ continuum is therefore not a blend of two state sequences but a family
 of \emph{re-planned gestures}: at $\lam=0$ the synthesis is bitwise
 identical to the canonical cluster; at $\lam=1$ the C1 target has
 reached the C2 coordinates---the place-assimilated cluster C1'C2---%
-while C2 itself, the glottal block, the lips and the velum never move.
-Four run-time guarantees are recorded per synthesis ($\lam=0$ bitwise
-canonical; $\theta$ equality at $\lam=1$; glottal block bitwise
-constant; context outside the C1-incident arcs bitwise canonical),
-and all four held for all 54 syntheses. The experiment is realized
+while C2 itself, the glottal block and the velum never move, and the
+lips \emph{join} the gesture: this edition takes the whole CC
+selector into account under $\lam$, as in the base model, whose
+cluster machinery already drives the union of the two consonant
+selectors. Four run-time guarantees plus three full-selector checks
+are recorded per synthesis ($\lam=0$ bitwise canonical; $\theta$
+equality at $\lam=1$; glottal block bitwise constant; context
+outside the C1-incident arcs bitwise canonical; the recruitment
+confined to those arcs; for the unlicensed frames, whose C2
+selectors are subsets of sel(/n/), a verified bitwise no-op), and
+all held for all 54 syntheses. The experiment is realized
 for nine values of $\lam$ on six frames: the licensed pool
 (\emph{clean pan}, \emph{mean boat}, \emph{thin packet}; n before the
 labials /p/, /b/, /p/, a $+140^{\circ}$ target rotation) and the
@@ -681,11 +686,14 @@ cluster---the same minimal contrast that separates their viable from
 their unviable condition. The ground truth is gestural, not acoustic
 (Figure~\ref{fig:curves}a): the rotation is carried by the jaw and
 the tongue body (over P1, jaw angle $-2.34 \to -3.28^{\circ}$,
-tongue-body x $3.96 \to 2.51$\,cm, y $0.20 \to 0.66$\,cm), while lip
-opening and protrusion and the velum stay \emph{bitwise constant}
-along every continuum---in the target-level semantic the labial
-closure remains the business of C2, so the assimilated C1 is a nasal
-whose gesture aims at the C2 place, not a copy of C2's constriction.
+tongue-body x $3.96 \to 2.51$\,cm, y $0.20 \to 0.66$\,cm), while the
+velum stays \emph{bitwise constant} along every continuum and the
+lips are recruited in proportion to $\lam$ on the labial-C2 frames
+(lip opening at the C1 target point of P1: $0.61 \to 0.46 \to 0.16
+\to 0.00$\,cm at $\lam = 0/0.5/0.75/1$, with protrusion rising to
+the base model's own labial value)---the full CC selector realizes
+the interpolated target, so the assimilated C1 is a nasal whose
+gesture \emph{becomes} C2's, closure included, degree by degree.
 Each of the 54 stimuli was synthesized with the same engine,
 resampled and normalized exactly like the base material, passed
 through both encoders, and classified by the unchanged nasal probe
@@ -694,7 +702,8 @@ stage-1 report), so the continuum is measured by the same probes as
 the endpoints.
 
 Two facts secure the validity of the new material. First, the four
-run-time guarantees above are structural, checked per synthesis
+run-time guarantees and three full-selector checks above are
+structural, checked per synthesis
 against the engine's own canonical output---$\lam=0$ is \emph{by
 construction} the canonical cluster, not a re-synthesis of it, so no
 endpoint anchoring against the stage-1 items is needed or meaningful
@@ -722,11 +731,14 @@ reading ($\lam^{*} \approx 0.7$--$0.9$) does not exist. Three facts
 deserve the reader's attention. First, the boundary's disappearance is
 articulatory, not statistical: the motor blend of the previous
 editions closed the lips inside the C1 window, producing real [m]
-acoustics that the phone code tracked; the target-level rotation moves
-the jaw and the tongue while the labial closure stays with C2, and the
-resulting acoustics never leave the /n/ basin. The encoder is not
-tolerating a labialized closure---there is no labialized closure to
-tolerate. Second, what T4 tracks instead is the \emph{coarticulation
+acoustics that the phone code tracked; the target-level rotation
+moves the jaw and the tongue, and the resulting acoustics never leave
+the /n/ basin. The full-selector condition of this edition closes
+the lips again---in proportion to $\lam$, reaching the base model's
+own labial closure at $\lam=1$---and the boundary still does not
+return: the encoder is not merely tolerating an incomplete gesture;
+it keeps the underlying reading through a completed labial closure
+whose tongue keeps aiming at the rotated target. Second, what T4 tracks instead is the \emph{coarticulation
 cleanup}: on the velar-C2 frames the probability of /n/ rises
 monotonically with $\lam$ (NV3: $0.81 \to 0.90 \to 0.95$; pooled
 unlicensed $\rho(\lam, P(\mathrm{n})) = +0.90$ at T4), because the
@@ -738,11 +750,16 @@ describe articulatorily, but its gradient at the phonetic layers is a
 coarticulation gradient, not an assimilation gradient. Third, and most
 important for the cross-reference: the only categorical surface event
 of the continuum lives at the deepest CTC layers and the very end of
-the rotation---the licensed pool's $P(\mathrm{n})$ crosses below
-$P(\mathrm{m})$ between T10 and T11 at $\lam=1$ (P1: $0.44 \to 0.53$
-for [m])---so any context sensitivity the encoders display is confined
-to exactly the layers and the degree where letter supervision lives,
-not to the phone code that sets boundaries.
+the rotation---at $\lam=1$ the licensed pool's deep cells read [m]
+(pooled $P(\mathrm{m})$ at T10--T11 of the CTC model: $0.57$--$0.66$)
+---and the full-selector condition reallocates it: the crossing is
+carried by P2 and P4, whose cluster context produced it already at
+$\lam=0$, while P1, whose lips now close, \emph{loses} its endpoint
+crossing (T10--T11: $P(\mathrm{m}) = 0.24/0.09$ against
+$0.44/0.53$ with the lips blocked)---so any context sensitivity the
+encoders display is confined to exactly the layers where letter
+supervision lives and is driven by the cluster context, not by the
+surface closure, and never by the phone code that sets boundaries.
 
 \begin{figure}[htbp]
 \centering
@@ -753,9 +770,11 @@ and every target-rotation strength $\lam$ (Eq.~\eqref{eq:morph}), in
 the licensed frame P1 (\emph{clean pan}, labial C2) and the
 unlicensed velar frame NV3 (\emph{clean can}), for both encoders. The
 dashed black contour marks $P(/n/)=0.5$ where it exists---at the
-phonetic layers it does not: the revised continuum has no category
-boundary, and the contour survives only at the deep CTC layers of the
-licensed column, near $\lam=1$.}
+phonetic layers it does not: the continuum has no category boundary,
+and in the licensed column the contour now survives only
+transiently (P1, around $\lam \approx 0.4$ and at the T10--T11
+endpoint of the deepest layers); the sustained endpoint crossing
+lives on P2/P4, outside this figure.}
 \label{fig:heatmap}
 \end{figure}
 
@@ -765,15 +784,16 @@ licensed column, near $\lam=1$.}
 \caption{Reading the continuum. (a) Articulatory ground truth at the
 midpoint of the C1 window (P1): the gesture carriers vary with
 $\lam$---tongue-body x and y drift, the jaw angle (right axis)
-drops---while lip opening stays bitwise constant (the dotted vertical
-marks $\lam=0.5$). (b) Probability of the underlying /n/ at layer T4
+drops---and the lip opening joins the gesture with weight $\lam$
+(the full CC selector; the dotted vertical marks $\lam=0.5$). (b) Probability of the underlying /n/ at layer T4
 as a function of $\lam$: every curve stays high; the velar frame NV3
 rises with $\lam$ (coarticulation cleanup) and no curve crosses 0.5.
 (c) The late-layer [m] surface: $P(/[m]/)$ at layer T10 of the CTC
 model, licensed pool (mean of P1, P2, P4) against the unlicensed
 pool---the assimilated reading is a late-layer, labial-C2 phenomenon,
-present already at $\lam=0$ on P2/P4 and sharpened at $\lam=1$, absent
-from the unlicensed pool and from the self-supervised model.}
+present already at $\lam=0$ on P2/P4 and indifferent to the recruited
+closure of P1, absent from the unlicensed pool and from the
+self-supervised model.}
 \label{fig:curves}
 \end{figure}
 
@@ -785,23 +805,28 @@ as $P(/[m]/)$ at T10 for the licensed pool against the unlicensed
 pool, degree by degree. In the deepest CTC layers (T10--T11) the
 licensed pool carries a [m] reading that is \emph{unidirectional} in
 $\lam$: it is already present at $\lam=0$ (pooled $P(m)$ at T10 of
-$0.46$--$0.54$, driven by P2 and P4) and it sharpens at $\lam=1$
-(P1: $0.24 \to 0.44$ at T10, $0.53$ at T11, crossing above
-$P(\mathrm{n})$). The model has learned that a nasal in a
+$0.46$--$0.54$, driven by P2 and P4), and the full-selector condition
+shows how gesture-blind it is: with the lips blocked (v3.0) the
+rotation sharpened P1's reading ($0.24 \to 0.44$ at T10, crossing at
+T11); with the lips \emph{recruited}---a true labial closure through
+most of the C1 window---P1's reading reverts to its baseline
+($0.24 \to 0.24$ at T10, $P(\mathrm{m}) \leq 0.09$ at T11) while
+P2/P4 keep theirs. The model has learned that a nasal in a
 tautosyllabic cluster before a labial is where /n/ is often spelled
 with the labial's letter, and its deepest layers read that context as
-[m] \emph{regardless of the gesture}: at $\lam=0$ the C1 is a
-canonical alveolar closure, at $\lam=1$ it is a gesture aimed at the
-labial place---the reading is the same. This is the continuum
+[m] \emph{regardless of the gesture---and regardless of the closure}:
+at $\lam=0$ the C1 is a canonical alveolar closure, at $\lam=1$ its
+lips are closed on the labial place, and the reading is the same
+wherever the context already produced it. This is the continuum
 generalization of the P2-canonical attraction reported in the probing
 campaign, and it is \emph{not} a compensation effect: it suppresses
 the underlying interpretation in exactly the context where
 compensation would enhance it. The decisive frame is P4 (\emph{thin
 packet}): it contains no /m/ segment anywhere, yet its T10 reading is
-[m] along the whole continuum ($P(m)$ up to $0.92$ at $\lam=1$)---the
+[m] along the whole continuum ($P(m)$ up to $0.82$ at $\lam=1$)---the
 reading is carried by the cluster context, not by the token's own
 phonetics. The self-supervised model shows none of this
-(licensed-pool T10 $P(m)$ stays at or below $0.21$ beyond $\lam=0$),
+(licensed-pool T10 $P(m)$ stays at or below $0.30$ beyond $\lam=0$),
 and its $\lam=0$ licensed deep cells carry only the known late-layer
 quirk of the canonical token (a T11--T12 drift that recovers one
 half-step into the continuum). The modulation is therefore cleanly
@@ -856,8 +881,8 @@ continuum: no T4 boundary at all; the deep layers read [m] on
 labial-C2 clusters (P4, with no /m/ segment) & X \\
 Deep-layer context effect & not separable from decoding at the output
 level & unidirectional labial-context reading at T10--T11: present
-at $\lam=0$ (pooled $P(m) \approx 0.5$ licensed), sharpened at
-$\lam=1$, CTC model only & X \\
+at $\lam=0$ (pooled $P(m) \approx 0.5$ licensed), indifferent to
+the recruited lip closure, CTC model only & X \\
 Lexical knowledge & output level: non-word vs.\ real-word asymmetry;
 \emph{wept}, \emph{playing} over-rides & excluded by design (probing
 reads representations, no decoding); P3 shows context-lexical
@@ -972,18 +997,19 @@ reading shaped by letter supervision: a nasal in a tautosyllabic
 cluster before a labial is read toward the labial's letter, [m],
 regardless of the gesture (the expectation effect at $\lam=0$ and the
 surface reading at $\lam=1$ are one and the same effect, present on
-P2/P4 at the baseline and sharpened on P1 by the full rotation), and
+P2/P4 at the baseline, and the full-selector condition shows it is
+closure-blind: recruiting P1's lips removes its endpoint sharpening
+and leaves the P2/P4 reading untouched), and
 its aggregate result is a licensed-pool \emph{deficit} in underlying
-verdicts ($-23.1$ points at $\lam=1$, the one significant
-licensed--unlicensed contrast we measure)---the opposite sign to the
+verdicts---now on both listeners ($-20.5$ and $-17.9$ points at
+$\lam=1$, the two significant licensed--unlicensed contrasts we
+measure)---the opposite sign to the
 viable-over-unviable advantage that Pouw et al.\ measured behaviorally.
 This stage is context-sensitive, unidirectional, probabilistic,
 and---on the evidence of the self-supervised checkpoint and of Pouw et
 al.'s footnote---a product of training on underlying spellings rather
 than of self-supervised structure learning. Its circuit substrate, on
 the evidence of the interchange interventions, is already in place by
-layers 4--5, where attention heads gather the context phone and early
-MLPs write it into the target frames.
 layers 4--5, where attention heads gather the context phone and early
 MLPs write it into the target frames.
 
@@ -1079,7 +1105,7 @@ Second, every result file is plain JSON with the layer names
 (\sampa{CNN}, \sampa{T1}--\sampa{T12}) and the item labels spelled
 out, so every number in this document can be checked in a text editor,
 without executing any code. The compiled document itself ships at
-the kit root as \texttt{nasal\_place\_assimilation\_synthesis.pdf}.
+the kit root as \path{nasal_place_assimilation_synthesis.pdf}.
 
 \begin{table}[htbp]
 \centering
@@ -1108,10 +1134,13 @@ outputs (\sampa{results.json}) \\
 \sampa{work/lambda075/}, \sampa{work/lambda0625/} & the production-
 degree blocks: byte-identical subsets of the continuum (18 and 24
 items) with their condition statistics \\
+\sampa{work/legacy\_lipblocked/},
 \sampa{work/legacy\_motorblend/}, \sampa{work/legacy\_unconfined/} &
-the superseded $\lam$ tiers (v2.1 confined motor blend; v2 unconfined
-dotted), with the machine-readable comparisons
-(\sampa{revision\_comparison\_v30.json},
+the superseded $\lam$ tiers (v3.0 blocked-lip campaign, byte-identical;
+v2.1 confined motor blend; v2 unconfined dotted), with the
+machine-readable comparisons
+(\sampa{revision\_comparison\_v31.json},
+\sampa{revision\_comparison\_v30.json},
 \sampa{correction\_comparison.json}) \\
 \sampa{figures/} & the four figures of this document (PNG, 300\,dpi) \\
 \sampa{latex/} & full document source: \sampa{main.tex}, the cover,
@@ -1134,10 +1163,13 @@ dedicated, idempotent patch script that asserts exactly one match
 before editing the engine's phoneme table and leaves its provenance
 comment inside the edited source; the whole change is three lines.
 Third, the continuum experiment of this edition runs on the reference
-$\lam$ model: the pinned engine checkout (covtl-pipeline
-\texttt{1d15ed7} + the committed corrections series) with the
-\texttt{covtl-lambda} v1.2.0 patch applied, its 53-test suite green;
-the 54 syntheses carry the model's four run-time guarantees, and the
+$\lam$ model extended by the kit's own additive module
+(\sampa{repro/morphing\_fullsel.py}: under $\lam$ the whole CC
+selector is taken into account): the pinned engine checkout
+(covtl-pipeline \texttt{1d15ed7} + the committed corrections series)
+with the \texttt{covtl-lambda} v1.2.0 patch applied, its 53-test
+suite green; the 54 syntheses carry the model's four run-time
+guarantees plus the three full-selector checks, and the
 probing stage reuses the stage-1 instrument unchanged (LOSO curves
 identical), so continuum and endpoints are measured alike.
 
@@ -1269,38 +1301,40 @@ Sections~\ref{sec:results}--\ref{sec:twostage}.
 \item Stage-1 verdicts and probabilities
 (Figs.~\ref{fig:verdicts} and~\ref{fig:pca}, the numbers of
 Section~\ref{sec:results}):
-\texttt{work/results/<model>/classification.json}, one record per test
+\path{work/results/<model>/classification.json}, one record per test
 token per layer with \sampa{pred} and \sampa{proba}.
 \item Probe cross-validated accuracies:
-\texttt{work/results/<model>/probe\_cv.json}.
+\path{work/results/<model>/probe_cv.json}.
 \item Continuum probabilities (the boundary-free reading of
 Section~\ref{sec:lambda}, Fig.~\ref{fig:heatmap}):
-\texttt{work/lambda/results.json} $\to$ \texttt{<model>} $\to$
-\texttt{cells} $\to$ \texttt{P1\_l0.75} $\to$ \texttt{T4} $\to$
-\texttt{proba.n}, and its neighbors along both axes.
+\path{work/lambda/results.json} $\to$ \path{<model>} $\to$
+\path{cells} $\to$ \path{P1_l0.75} $\to$ \path{T4} $\to$
+\path{proba.n}, and its neighbors along both axes.
 \item Pooled condition cells and contrasts
-(Fig.~\ref{fig:curves}c and the dose-response): the \texttt{pools},
-\texttt{pooled\_continuum}, and \texttt{pooled\_agreement} blocks of
-\texttt{work/lambda/note\_stats.json}; the production-degree conditions
-in \texttt{work/lambda075/pouw075\_stats.json} and
-\texttt{work/lambda0625/pouw0625\_stats.json}.
+(Fig.~\ref{fig:curves}c and the dose-response): the \path{pools},
+\path{pooled_continuum}, and \path{pooled_agreement} blocks of
+\path{work/lambda/note_stats.json}; the production-degree conditions
+in \path{work/lambda075/pouw075_stats.json} and
+\path{work/lambda0625/pouw0625_stats.json}.
 \item Articulatory ground truth (Fig.~\ref{fig:curves}a) and the
 guarantees:
-\texttt{work/lambda/synth\_meta.json} $\to$
-\texttt{frames[*].c1\_window\_frames}, \texttt{checks}, \texttt{files}
-(SHA-256), plus the shipped \texttt{tracts/} themselves.
+\path{work/lambda/synth_meta.json} $\to$
+\path{frames[*].c1_window_frames}, \path{checks}, \path{files}
+(SHA-256), plus the shipped \path{tracts/} themselves.
 \end{itemize}
 
 Model provenance, once and for all:
 \begin{itemize}[leftmargin=1.4em, itemsep=2pt]
 \item \emph{Encoders}: the public hub checkpoints
-\texttt{facebook/wav2vec2-base-960h} (CTC-tuned) and
-\texttt{facebook/wav2vec2-base} (self-supervised).
+\path{facebook/wav2vec2-base-960h} (CTC-tuned) and
+\path{facebook/wav2vec2-base} (self-supervised).
 \item \emph{Synthesis}: the covtl-pipeline engine (commit
 \texttt{1d15ed7} + the committed corrections series) with the
-\texttt{covtl-lambda} v1.2.0 reference patch, driving VocalTractLab,
-audio at 44.1\,kHz; the campaign guarantees are recorded per item in
-\texttt{work/lambda/synth\_meta.json}.
+\texttt{covtl-lambda} v1.2.0 reference patch plus the kit's
+full-CC-selector module, driving VocalTractLab,
+audio at 44.1\,kHz; the campaign guarantees (four run-time + three
+full-selector) are recorded per item in
+\path{work/lambda/synth_meta.json}.
 \item \emph{Analysis}: resampling to 16\,kHz with per-utterance
 normalization; token vectors are window means over the hidden states
 whose frame centers fall in $[0.58,0.68]$\,s.
@@ -1382,10 +1416,7 @@ single-point edit.
 the phone identity the layer's representation most strongly encodes.
 
 \item[SAMPA] A machine-readable ASCII transcription standard
-(viz.\ \sampa{klinpan} for \emph{clean pan}, the dotless
-tautosyllabic cluster spelling; a dotted \sampa{klin.pan} would be
-a C.C split, and \sampa{clinpan} would lose the \sampa{c} to the
-SAMPA guard). The engine consumes SAMPA
+(\sampa{klin.pan} for \emph{clean pan}); the engine consumes SAMPA
 strings, and the velar nasal is written \sampa{N}.
 
 \item[Surface dominance] The empirical pattern that assimilated

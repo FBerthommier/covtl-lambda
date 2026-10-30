@@ -1,12 +1,18 @@
 {
- "kit_version": "3.0",
- "campaign": "wav2vec2_lambda_6frames_v1",
- "created": "2026-10-28",
- "lambda_model": "covtl-lambda v1.2.0 (2026-10-26), target semantic, theta channel, rho fixed",
+ "kit_version": "3.1",
+ "campaign": "wav2vec2_lambda_6frames_v2_fullsel",
+ "created": "2026-10-30",
+ "lambda_model": "covtl-lambda v1.2.0 + full-CC-selector extension (kit v3.1): theta channel, rho fixed, whole CC selector under lambda",
+ "condition_v31": {
+  "statement": "under lambda variation the whole CC selector is taken into account, as in the base model",
+  "mechanics": "lambda moves the C1 polar target exactly as in v1.2.0 (theta toward theta_C2, rho fixed) and the C2-only selector parameters (lips LD/LP for a labial C2) join the C1 gesture with weight lambda: P(lam) = (1-lam)*P[sel C1] + lam*P[union CC selector]",
+  "structural_noop": "for a C2 whose selector is a subset of sel(C1) (alveolar /t/, velar /k/,/g/ after /n/) the union equals sel(C1): the continuum is bitwise the v1.2.0 one (asserted per frame)"
+ },
  "reference_tree": {
   "base_commit": "1d15ed7 (covtl-pipeline v1.1.0)",
   "corrections": "covtl-corrections-patch v1.0.1 (content = commits feat(guard)/fix(g2p-de)/fix(g2p-pt) of fix/polar-teardrop-arcplot)",
   "lambda_patch": "covtl-lambda repo commit c13f4d0 (v1.2.0 + README/docs commits)",
+  "kit_extension": "repro/morphing_fullsel.py (kit v3.1, additive module over the patched engine)",
   "speaker": "jd3, f0 102.216 Hz, 44.1 kHz"
  },
  "lambdas": [
@@ -48,12 +54,46 @@
     271
    ],
    "n_frames": 584,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "LP",
+     "LD"
+    ],
+    "union": [
+     "JA",
+     "LP",
+     "LD",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": [
+     "LP",
+     "LD"
+    ]
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_c2_only_recruited": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   },
   {
@@ -83,12 +123,46 @@
     231
    ],
    "n_frames": 544,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "LP",
+     "LD"
+    ],
+    "union": [
+     "JA",
+     "LP",
+     "LD",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": [
+     "LP",
+     "LD"
+    ]
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_c2_only_recruited": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   },
   {
@@ -118,12 +192,46 @@
     231
    ],
    "n_frames": 656,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "LP",
+     "LD"
+    ],
+    "union": [
+     "JA",
+     "LP",
+     "LD",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": [
+     "LP",
+     "LD"
+    ]
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_c2_only_recruited": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   },
   {
@@ -153,12 +261,45 @@
     271
    ],
    "n_frames": 584,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "union": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": []
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_union_noop": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   },
   {
@@ -188,12 +329,43 @@
     271
    ],
    "n_frames": 584,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TBX",
+     "TBY"
+    ],
+    "union": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": []
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_union_noop": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   },
   {
@@ -223,12 +395,43 @@
     231
    ],
    "n_frames": 544,
+   "selectors": {
+    "c1": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TBX",
+     "TBY"
+    ],
+    "union": [
+     "JA",
+     "TCX",
+     "TCY",
+     "TTX",
+     "TTY",
+     "TBX",
+     "TBY"
+    ],
+    "c2_only": []
+   },
    "checks": {
     "lam0_bitwise_canon": true,
     "glottis_bitwise_constant": true,
     "lam1_theta_equals_c2": true,
     "lam1_theta_equiv_c2_mod_2pi": true,
-    "outside_c1_arcs_bitwise_canon": true
+    "outside_c1_arcs_bitwise_canon": true,
+    "fullsel_confined_to_c1_arcs": true,
+    "fullsel_union_noop": true,
+    "fullsel_lam1_c2_only_equals_union": true
    }
   }
  ],
@@ -236,58 +439,58 @@
  "files": {
   "P1_l0.tract": "d850df9cf33d09984fa34b819ac123758de033db935e698a7b65d496c0712482",
   "P1_l0.wav": "a8e2f3fe652065a72f641c2432992db66d9f291e78e02179803f7006102e23a3",
-  "P1_l0.125.tract": "52441952825a29c4194e0f29e3643fe2219d88b0df56f43323fc231fa72a0682",
-  "P1_l0.125.wav": "c1dd0bddfc984b1ba3e30accd35b22a71624f3f5644d2df65b109568c12b2c5e",
-  "P1_l0.25.tract": "043bc439800a2fc1c3f9ed37acad2cb4db9526df841ac6edfe858c6c78ab31fd",
-  "P1_l0.25.wav": "76fc8a2e4ab5f6a70615b9aead6741aba14bbd8268b4f3241f9e6eaecfc1256d",
-  "P1_l0.375.tract": "1dbdf7bc196e907aadc89e77bea8336d6b6f68df8d6f0034f773bdfd1cd69d35",
-  "P1_l0.375.wav": "d107841f0b829bea147241c03070f586f9a5d05bb65322f1b50e28e85380fcd2",
-  "P1_l0.5.tract": "2481ddd4e08eb79e5eea90d71e10e5bd43646a2c590be252fcde8923b59ae77a",
-  "P1_l0.5.wav": "2108f2d1c782e72faf6c17f96a840b04a3a9f2b004a0291d8140c284077683d5",
-  "P1_l0.625.tract": "afbacbac8736e3f6cdeea3d33114508a89a4a067af48c6ec75b03c33a952b7d5",
-  "P1_l0.625.wav": "4339d1449699413b3e17802e86bb2a2976f3568e09f4b945a67b69f8b0b958da",
-  "P1_l0.75.tract": "0986efbf760afb232256cd7960558fe6da4a1dd6b2dcc3eaf6d335b10e7b4355",
-  "P1_l0.75.wav": "8f437eea6d88832ca12f48bac96361bfcb224192f9041899875cd77561242540",
-  "P1_l0.875.tract": "fab489ea29e5627eb8f132467686c68e0c8f9b2c41bfce7de261b3791506c587",
-  "P1_l0.875.wav": "b80da563e4af588b2400eb6fc07c08ee93426812c6cb81fcdfeffd5d4619b1b4",
-  "P1_l1.tract": "17a5cc1d35d72875e9b9643278c026f84d3a87b8858d1be3debc094be3121c3f",
-  "P1_l1.wav": "c04ff63d2f3f12eb4ad35cd9ad8a74b03f463289053951e032c238c7fbbf9f3a",
+  "P1_l0.125.tract": "15c36440f71e68bfcd3e0a923a9e2ca0e51fa31669c5745d86d65a8d4230d094",
+  "P1_l0.125.wav": "c9f3c25bd4bb8fd66fa8d9096be96cc80dd923c1f8831bccc7f0da6eb23c612f",
+  "P1_l0.25.tract": "1b4127fe5167b8d295cf4a7276f013aa342a75d8f7b9aa48884c634ecc72e13e",
+  "P1_l0.25.wav": "97a79b20d4487e7f84a5eed7c6a20dfd78b4750069240e95dbf3363ce087d53b",
+  "P1_l0.375.tract": "d84d37c1868b640b70fb75708100a4b757c221043e86c04e6646d665e6577730",
+  "P1_l0.375.wav": "240d2df90e37e93df1ea63ca1b6b31368d99f1b9ee279719ab9490ab22859ee9",
+  "P1_l0.5.tract": "1affc48fd2eca3d96229e5a0f09dfca42dab7f94a8ffc279ece4fde58ad748eb",
+  "P1_l0.5.wav": "639ced1959c02edda44962f02e5378c5878924bfe0049678f3d881f843d810c0",
+  "P1_l0.625.tract": "53fcaec92495a59d573274516a5b5d31d951ea088f37890ca55269bcdad9ff0c",
+  "P1_l0.625.wav": "c1bf69da1f8508c1d13fbe7ed6c351b0764fd06ecaea5ab5ea20ecaa3072babf",
+  "P1_l0.75.tract": "982ca46f00247fd4c6bce287f4a1074cdd23c435a609f621c3aed4a0cb60f922",
+  "P1_l0.75.wav": "646aedf178394f9cf4eead11a0bc3b719009eeaca222ef3d4fdb3ac936961561",
+  "P1_l0.875.tract": "db19f02f90617583b45a70cdf7097a8e97b8bb2509f59c253fd537451109ff04",
+  "P1_l0.875.wav": "ca8dc2076a5cc843b91bbd2b6aec739875a67950ce9988956f192355f2b78fe7",
+  "P1_l1.tract": "746f0cc365a89a3a2b129a01125f7f2fab079c7fc9f34fb4643cc77cd1c6106b",
+  "P1_l1.wav": "0e844badcdbff96792384da9e31bc7bcfeffafef18045f485b57a3bdfe4d34ca",
   "P2_l0.tract": "9917988e0faee514da91e9b646b867b87ac8456ba8fc7c546dfc595adecc71a1",
   "P2_l0.wav": "b04d965feea46917c5b865e32786ca94a283600618a7a9da2cfe33718cc84816",
-  "P2_l0.125.tract": "59bc8ecc5b55559f36b23264a9117523fdd0b9c2037313bd083e56ae72d33db4",
-  "P2_l0.125.wav": "3efbe24cbf8f98602d2a2deb0807c7fb62aad58bbc7286c343f93a6746f34cc8",
-  "P2_l0.25.tract": "4fb4abc0de893a821fdc467c3ca145f0c1328efb4dbfff4305fa5b5fa9080820",
-  "P2_l0.25.wav": "3ee0ae3def70043d49de19441736a0abedef0accd952afc8e669961764ca5dca",
-  "P2_l0.375.tract": "646047b90dac0a3359c090a41aefc9623d7fd19216a8dc948310f9d3d238eec9",
-  "P2_l0.375.wav": "73dfeff4134f98d036c23f6b0c77865c48cc297cf164239c16b9b8a6ac1483d2",
-  "P2_l0.5.tract": "0f28c5a0e3a28cc01b228eb99edb7318aa7cd2a9057f2dfbb4fa7678cf2812ef",
-  "P2_l0.5.wav": "1cc9ac993000f027641e45fe4bce4a48f3aaff783bc5a970a1106765b4593296",
-  "P2_l0.625.tract": "7d8520f2c411923a716881d17421a9665b4e8c1423c72dfea6303e425f5e9ab0",
-  "P2_l0.625.wav": "16dc8908e7b38d1a326646ef3186f755698dda779afb7413418bef58aa850ed1",
-  "P2_l0.75.tract": "1ed5a4940333eec2143aaed2999f958dc35beaa1870cdb8951c57a6adca20b78",
-  "P2_l0.75.wav": "19a23318196d77e36af7c9c359d36b591378bcfb245ca55d7d1497c3cf9beb30",
-  "P2_l0.875.tract": "479f16b43b166644385964bc8c56fec89e0307fe199da93497d60061d3d17807",
-  "P2_l0.875.wav": "e32a6331c3994893154e91c2b7f4e5925854fccba253cfeab178dd38d370fb7f",
-  "P2_l1.tract": "b5a893d19f14d14b4bd17bb64881c6cbb928111153d3606f3c851390888dc54e",
-  "P2_l1.wav": "481d5b6e0cadbabcc56974664f60876c93c4df5ed6d53de56f79fdff22091d14",
+  "P2_l0.125.tract": "51f5ca407eafcba92010154974e8ff519eb903a1d145004f85904049f70b4ccf",
+  "P2_l0.125.wav": "02a854a025202feb25ac3deb8d92b8946c2f7abbedb373420909b833bc584301",
+  "P2_l0.25.tract": "1a6a8accd2e70738f4a241f0b4d1e4f93d30ac166a967143b91983d1800a8602",
+  "P2_l0.25.wav": "0016fd70462411d29dbae751f4cede6f53343c30da6f5b3c1c906c0bd85449f1",
+  "P2_l0.375.tract": "49fd866f0d96d2a19f0f5102342ebd759cf10ece972acb4d9a0311d9c2b74b85",
+  "P2_l0.375.wav": "3357b178283511c905440854cd79062f92bb36e57cbd491033e0767723234032",
+  "P2_l0.5.tract": "1660673c6c96cd11c8914d2b755bcbc91f62258ef47d00ef535a929d99912dd2",
+  "P2_l0.5.wav": "df7b8ed913af6a4f06d583cbc4144ad2414f95f14c38d68e2995eb344c1b75cf",
+  "P2_l0.625.tract": "7afc9702d65c8c86875cbb51b55cfc8f2d057ea883a3c24ffa2bd70998f7911d",
+  "P2_l0.625.wav": "a9f5ef80ca7733f1ae0bbf49cef79a13514cb00b619e8dafe7112f8c4de44897",
+  "P2_l0.75.tract": "f97839c3f735f1374df1ce3d39ce78920e5221712ee63da1a7137dd7bd6b0fe6",
+  "P2_l0.75.wav": "4385adf568682737659e831e3be5b973615e81cc01cbbe81865fb053835d15e5",
+  "P2_l0.875.tract": "5c893d712214223ec3cab368de9dbda6f08e8705ff36adab08ec3fff7deb9e66",
+  "P2_l0.875.wav": "ba9381cda9e0ea842a82309396cf0866f2d884562d645ea164e9e22dbfb12e13",
+  "P2_l1.tract": "93c5f3f8e197f79ee4943b0e70ba3c3ae0cfbd4cb4f2d69d980f5babc8a7d935",
+  "P2_l1.wav": "0f07ddb23e2b399bae2d30746c3e052913069952bbc568ca76768a3a78fa7643",
   "P4_l0.tract": "e19c527b30808af3821549086a642cf3e7dda5b5ac192bb267744a223f5a56c4",
   "P4_l0.wav": "8f700d65f480377f6946765ab3931452e959fbf7bfbf3edede574cb11d1e593e",
-  "P4_l0.125.tract": "0ee9fbc3ca210b15e83cf5197b4281a51031584bbf6f62df44daab2f27b6869f",
-  "P4_l0.125.wav": "87c8229916e1dd053844bf0c7d055d5deea8edf9623e9ef78f51a7220e042cac",
-  "P4_l0.25.tract": "a0a6fae195e9171129ff50801fc906e6928383431a0e42394fff927a65f21dd9",
-  "P4_l0.25.wav": "be7635ad93fbaf0ee7503fbc03955978fb3fd17992558e270a402f37e25b6bcd",
-  "P4_l0.375.tract": "e72235a38757624722a9ac360a2e77c5a7dbbb8a2cec5519990410b4b92772c9",
-  "P4_l0.375.wav": "14cc6c0c8f07745ff8e575886a6ff56a9ccd7fe6df7064401f65df226d881e37",
-  "P4_l0.5.tract": "d3fd28651114c62ae61a89ab24450234aa24d483fb7bef5d2f12ce19096e1365",
-  "P4_l0.5.wav": "bf10085f52bec29f5fa56d3572a6a8d05a744549dfed6b6466e1817f6f69fa59",
-  "P4_l0.625.tract": "41015c6e24db955114596e062ee077689b58c80cb6335741e58f2a742c973b5b",
-  "P4_l0.625.wav": "858766d3dbc5fdbd7432cb700545cd9add44294383584b63328af1d148436a3f",
-  "P4_l0.75.tract": "a4147d1ea25ad38461e556145f061c3c19f5436c9bb4ccd4ec9a2936eaa19146",
-  "P4_l0.75.wav": "221476ab4443a86d2c32540e4fe1fbc1772ac18b44a6f6a7079c59c66dc362f2",
-  "P4_l0.875.tract": "72a12d13cbe7fbf053725ff4bad7f8f9d918fd23551353414ea8e5626125c7e9",
-  "P4_l0.875.wav": "3102d925f979456a460ff31a0a6a42b1dccb5a64c0156087ebccd9950daa7b72",
-  "P4_l1.tract": "5e272ada68b7fcc246f25576c38788b6d75d5b1ffcec089c82e18d0f1f4b9002",
-  "P4_l1.wav": "fa5b9f92b8cb8f64075947b3ca6eb61c7f0c787a6f4f1c83de655b33e5540858",
+  "P4_l0.125.tract": "e58bf40266ce3605711f4cfefe988ceb59b217681f6c30aa5f766409e67ce05b",
+  "P4_l0.125.wav": "356766b9e09b89bc266afccf8504edaae5d636c15b28e18efb3eb2f097ad2555",
+  "P4_l0.25.tract": "fb7327d9dc8e9e52046d3717ffce36d382eb49892d566b5ce36b2680456dc0b3",
+  "P4_l0.25.wav": "fe2abc26bddf05d3264c5ce256e00d5949fa9bc4f8cb40b8a256727b331c9d1b",
+  "P4_l0.375.tract": "ef0461f38b3f06355686d1b71db348bdd3b97543f81e1047ed09cfa00a45805f",
+  "P4_l0.375.wav": "00b730874959976db0f4e5152c0899e73ed808fca1151c427bc1202d37d117cd",
+  "P4_l0.5.tract": "d3fe43bbb69ad78180a79f164d7460cda8ac7faf8b6ea29a335bf56256557495",
+  "P4_l0.5.wav": "ab8451e4992a467f386a472b1cbe200392d1fe5c978ab3a23572ce5e9ac5b64d",
+  "P4_l0.625.tract": "4e369a828def602376deae341b79bb9e3232799353c7a35a538b6493d92d9b38",
+  "P4_l0.625.wav": "8251c86f9020c196bf29e6b467b859d199407878f0afc546488f201de1ff0405",
+  "P4_l0.75.tract": "e52152cb25dc0724526ac6493e09d1e76dd9323cf200c3adcc8980fa300781b4",
+  "P4_l0.75.wav": "4dee07c5d10b0f9d2525ecc5448a11d2bcd1f80dbeba7f6b33fbee11bddc9cae",
+  "P4_l0.875.tract": "8fe79457b6e69f9da2f69a7329e74ba86fdabc67887e9e672c97f336d8f96a32",
+  "P4_l0.875.wav": "cd54713d8ed8304fd0dc86e03a386779ba02dff6710badc947f17c9894a7f0c9",
+  "P4_l1.tract": "883ee53a35c3f2b9ea75444e190dfe76bd23062097206cb595402505f54ad4e9",
+  "P4_l1.wav": "639ab4ae7f9844f5eb31a881984e56a94da7432fb5898d31c2951ec7ac555d48",
   "NV1_l0.tract": "fb9333b7e7df0f422b2ab77c73ecb209809c6f99d0d50a9ac17114ac8e81f667",
   "NV1_l0.wav": "72c33a13eb728f4d3f19ba11009121c6ecc1711cb69bd073148dcb5983206b40",
   "NV1_l0.125.tract": "e72d61d7cddd7b48488683802d386774b986a660485a0b74538f4737c7126b60",

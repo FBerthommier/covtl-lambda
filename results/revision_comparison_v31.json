@@ -1,0 +1,501 @@
+{
+ "revision": "v3.1 (full CC selector) vs v3.0 (lip blocked)",
+ "date": "2026-10-30",
+ "condition": {
+  "v3.0": "covtl-lambda v1.2.0 target semantic verbatim: lambda moves the C1 polar target (theta toward theta_C2, rho fixed) with C1's OWN selector, so the C2-only articulators (lips LD/LP of a labial C2) stay on the vocalic background -- the lip blocking",
+  "v3.1": "same target semantic, but under lambda the WHOLE CC SELECTOR is taken into account as in the base model: the C2-only parameters join the C1 gesture with weight lambda, P(lam) = (1-lam)*P[sel C1] + lam*P[union CC selector], confined to the C1-incident sub-arcs",
+  "unchanged": "jaw/tongue rotation (bitwise), glottis (bitwise), C2 and context (bitwise), engine tree (covtl-pipeline 1d15ed7 + corrections v1.0.1 + covtl-lambda v1.2.0 c13f4d0 + /N/ patch), probe instrument, training base, windows, lambda grid"
+ },
+ "bitwise_anchors": {
+  "lam0_all_frames": "tract + wav bitwise identical (6/6 frames)",
+  "nv_all_lambda": "tract + wav bitwise identical (NV1/NV3/NV4, 9 lambdas each): the full CC selector is a structural no-op when sel(C2) is a subset of sel(C1) (alveolar /t/, velar /k/,/g/ after /n/)",
+  "p_frames": "jaw/tongue rotation and every frame outside the C1-incident sub-arcs bitwise identical; ONLY the lip columns LD/LP inside those sub-arcs differ (recruited with weight lambda; LD reaches 0.000 cm = full labial closure at lambda=1)",
+  "probing": "probe instrument LOSO identical; all NV cells and all lambda=0 cells of the classification bitwise identical (0/702 and 0/78 differing cells)"
+ },
+ "rates_lam0.75_and_asymmetry": {
+  "lam0.75_w2v2_base960h_control": {
+   "v3.1": 64.1,
+   "v3.0": 64.1
+  },
+  "lam0.75_w2v2_base960h_viable": {
+   "v3.1": 79.5,
+   "v3.0": 79.5
+  },
+  "lam0.75_w2v2_base960h_unviable": {
+   "v3.1": 89.7,
+   "v3.0": 89.7
+  },
+  "lam0.75_w2v2_base_control": {
+   "v3.1": 61.5,
+   "v3.0": 61.5
+  },
+  "lam0.75_w2v2_base_viable": {
+   "v3.1": 100.0,
+   "v3.0": 97.4
+  },
+  "lam0.75_w2v2_base_unviable": {
+   "v3.1": 97.4,
+   "v3.0": 97.4
+  },
+  "lam1_asymmetry_w2v2_base960h": {
+   "v3.1": {
+    "diff_pp": -20.5,
+    "ci": [
+     -37.3,
+     -2.4
+    ],
+    "ci_excludes_zero": true
+   },
+   "v3.0": {
+    "diff_pp": -23.1,
+    "ci": [
+     -39.9,
+     -4.7
+    ],
+    "ci_excludes_zero": true
+   }
+  },
+  "lam1_asymmetry_w2v2_base": {
+   "v3.1": {
+    "diff_pp": -17.9,
+    "ci": [
+     -32.7,
+     -5.3
+    ],
+    "ci_excludes_zero": true
+   },
+   "v3.0": {
+    "diff_pp": -10.3,
+    "ci": [
+     -23.6,
+     0.6
+    ],
+    "ci_excludes_zero": false
+   }
+  }
+ },
+ "dose_response_endpoints": {
+  "w2v2_base960h_lam0": {
+   "v3.1": {
+    "viable": 48.7,
+    "unviable": 79.5
+   },
+   "v3.0": {
+    "viable": 48.7,
+    "unviable": 79.5
+   }
+  },
+  "w2v2_base960h_lam1": {
+   "v3.1": {
+    "viable": 69.2,
+    "unviable": 89.7
+   },
+   "v3.0": {
+    "viable": 66.7,
+    "unviable": 89.7
+   }
+  },
+  "w2v2_base_lam0": {
+   "v3.1": {
+    "viable": 48.7,
+    "unviable": 74.4
+   },
+   "v3.0": {
+    "viable": 48.7,
+    "unviable": 74.4
+   }
+  },
+  "w2v2_base_lam1": {
+   "v3.1": {
+    "viable": 82.1,
+    "unviable": 100.0
+   },
+   "v3.0": {
+    "viable": 89.7,
+    "unviable": 100.0
+   }
+  }
+ },
+ "t4_boundaries": {
+  "v3.1": {
+   "w2v2_base960h": {
+    "P1": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": ">1",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": 0.32380352644836274,
+     "T11": 0.3506768189509306,
+     "T12": ">1"
+    },
+    "P2": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": 0.9462418889689979,
+     "T4": 0.9866071428571428,
+     "T5": ">1",
+     "T6": 0.9500883392226148,
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "P4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV1": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": 0.37166976456009915,
+     "T11": ">1",
+     "T12": ">1"
+    },
+    "NV3": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": ">1",
+     "T11": ">1",
+     "T12": ">1"
+    },
+    "NV4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    }
+   },
+   "w2v2_base": {
+    "P1": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "P2": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": 0.9363399728383884,
+     "T4": "<0",
+     "T5": "<0",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": 0.9905775075987842,
+     "T12": 0.9550275259067358
+    },
+    "P4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": ">1",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV1": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV3": {
+     "CNN": ">1",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": ">1",
+     "T11": 0.1762736344537815,
+     "T12": ">1"
+    },
+    "NV4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": "<0",
+     "T4": "<0",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": ">1",
+     "T12": ">1"
+    }
+   }
+  },
+  "v3.0": {
+   "w2v2_base960h": {
+    "P1": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": ">1",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": 0.9605152911604524,
+     "T11": 0.9563356164383562,
+     "T12": ">1"
+    },
+    "P2": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "P4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV1": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": 0.37166976456009915,
+     "T11": ">1",
+     "T12": ">1"
+    },
+    "NV3": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": ">1",
+     "T11": ">1",
+     "T12": ">1"
+    },
+    "NV4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    }
+   },
+   "w2v2_base": {
+    "P1": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "P2": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": "<0",
+     "T5": "<0",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": ">1",
+     "T12": ">1"
+    },
+    "P4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": ">1",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV1": {
+     "CNN": "<0",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": "<0",
+     "T11": "<0",
+     "T12": "<0"
+    },
+    "NV3": {
+     "CNN": ">1",
+     "T1": ">1",
+     "T2": ">1",
+     "T3": ">1",
+     "T4": ">1",
+     "T5": ">1",
+     "T6": ">1",
+     "T7": ">1",
+     "T8": ">1",
+     "T9": ">1",
+     "T10": ">1",
+     "T11": 0.1762736344537815,
+     "T12": ">1"
+    },
+    "NV4": {
+     "CNN": "<0",
+     "T1": "<0",
+     "T2": "<0",
+     "T3": "<0",
+     "T4": "<0",
+     "T5": ">1",
+     "T6": "<0",
+     "T7": "<0",
+     "T8": "<0",
+     "T9": "<0",
+     "T10": "<0",
+     "T11": ">1",
+     "T12": ">1"
+    }
+   }
+  },
+  "reading": "boundary = the lambda where P(n) falls below 0.5 at layer T4; '>1' = no boundary inside the continuum, '<0' = already below at lambda=0"
+ },
+ "headline": {
+  "control_unchanged": "64.1 / 61.5 (lambda=0 anchors bitwise identical)",
+  "lam0.75_unchanged_960h": "viable 79.5 vs unviable 89.7 -- the lip recruitment does not move the production-degree rates of the CTC-tuned model",
+  "lam1_asymmetry": "inverted licensed-unlicensed contrast persists and becomes bilateral: CTC-tuned -20.5 [-37.3, -2.4] (was -23.1 [-39.9, -4.7]) and self-supervised -17.9 [-32.7, -5.3] (was -10.3 [-23.6, +0.6], n.s.) -- both CIs now exclude zero",
+  "phonetic_layers": "the best nasal probes (T2-T4, LOSO 1.00) still read the underlying /n/ at every lambda for every frame: the full labial closure does NOT create a phonetic category boundary",
+  "surface_layers": "the /m/ readings stay confined to the CNN and the late letter-supervised layers (T10+); P2/P4 read /m/ along the whole continuum at T10 exactly as under v3.0 (cluster-context driven, not lip-driven)"
+ }
+}
