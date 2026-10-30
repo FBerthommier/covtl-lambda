@@ -1,6 +1,7 @@
 # ROADMAP — Reproducing the Pouw et al. (2024) results in this repository
 
-Status: **W1 delivered and verified; results integrated (2026-10-28).**
+Status: **W1 delivered and verified; results integrated (2026-10-28);
+v3.1 full-selector edition integrated, W6 closed (2026-10-30).**
 This document records the reproduction approach announced by the
 analysis report ([covtl_lambda_C1C2_report.pdf](covtl_lambda_C1C2_report.pdf))
 and organizes its transport into this repository.
@@ -98,6 +99,45 @@ occurrences in the synthesis PDF source were corrected to the
 canonical ladder before the PDF was rebuilt into
 [results/](../results/README.md). W5 remains a standing gate for all
 future documents and result tables.
+
+### W6 — Full-selector edition (kit v3.1 integration) ✅ CLOSED (2026-10-30)
+
+The v3.0 campaign kept one restriction whose cost the wav2vec2
+readings made explicit: under λ the retargeted C1 carried its own
+selector, so the lips LD/LP of a labial C2 stayed bitwise constant on
+the vocalic background (the **lip blocking**). Kit v3.1 removes it:
+under λ variation the **whole CC selector** is taken into account,
+P(λ) = (1−λ)·P[T_sel1] + λ·P[T_union], with the C2-only lip
+parameters recruited with weight λ (NV frames are structural no-ops,
+sel(C2) ⊆ sel(C1)).
+
+Integration gates and their proof:
+
+1. **SHA-256 against the kit anchors** — the delivered kit
+   `nasal_synthesis_kit_v3.1.zip` (SHA-256 `13238d4f…8a05b`) carries
+   108 embedded anchors (54 tracts + 54 wavs in `synth_meta.json`):
+   **108/108 verified locally** before integration; every integrated
+   result file is a bitwise copy of the kit (48/48 git blobs equal to
+   the kit bytes; the probabilistic JSON and the PDFs are never
+   regenerated locally — the C++ synthesis backend is not bitwise
+   cross-platform). Bitwise tier anchors: λ = 0 and the NV block are
+   bitwise identical v3.1 ↔ v3.0 (780/780 probe cells).
+2. **W5 notation on the incoming documents** — the v3.1 kit documents
+   (CORRECTIONS, README, LaTeX sources) use the canonical ladder
+   (dotless endpoints); the integrated texts were swept again at
+   integration: zero dotted endpoints, zero spaced λ forms.
+3. **Chain replayable from the corrected `experiments/`** — the
+   shipped `probe_campaign.py` extraction bug is fixed (all 13 hidden
+   states, the `extract_features.py` path), the additive
+   `morphing_fullsel.py` module ships with the kit extension, and
+   `requirements.txt` pins the reference tree (covtl-pipeline
+   `1d15ed7` + covtl-corrections-patch v1.0.1 + this repository at
+   `c13f4d0` + the kit module); 23/23 scripts compile.
+
+Delivered in five commits: chain fix (`df61ae7`), results swap
+(`b71e02a`), kit-driven demo rebuild (`d5ebeb6`), documentation
+(manual, architecture, this file), and the served-content
+verification on GitHub Pages.
 
 ## Non-goals
 

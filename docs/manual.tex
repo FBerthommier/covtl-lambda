@@ -296,6 +296,67 @@ arc of C1 in the \code{.polar} phoneme timing~--- e.g.\ frames
 assimilation study) and the \emph{C1-incident arcs window} (the
 maximal footprint of $\lam$ on the trajectory).
 
+\subsection{The v3.1 full CC selector (kit extension)}\label{sec:fullsel}
+
+The v1.2.0 semantic of \sectref{sec:semantic} retargets the C1 polar
+target but keeps \emph{C1's own selector} active on the cluster: the
+articulators that realize C2 and are absent from
+$\operatorname{sel}(C1)$~--- the lips LD/LP of a labial C2~--- then
+stay on the vocalic background along the whole continuum (the
+\emph{lip blocking} of the v3.0 campaign: lips bitwise constant at
+every $\lam$).  The nasal synthesis kit v3.1 removes that restriction
+with an \textbf{additive module over the patched engine}
+(\code{experiments/morphing\_fullsel.py}; the engine patch itself is
+unchanged): under $\lam$ variation the \textbf{whole CC selector} is
+taken into account, as in the base model, whose cluster machinery
+already drives the union $\operatorname{sel}(C1) \cup
+\operatorname{sel}(C2)$.
+
+Per degree the module synthesizes the phrase twice through the
+engine's own chain: $T_{\mathrm{sel1}}$, the v1.2.0 item verbatim (C1
+retargeted, selector untouched), and $T_{\mathrm{union}}$, the same
+retargeted C1 with its selector widened to the CC union.  The v3.1
+item is $T_{\mathrm{sel1}}$ with the \emph{C2-only} parameters
+(those in $\operatorname{sel}(C2) \setminus \operatorname{sel}(C1)$)
+recruited with weight $\lam$:
+
+\begin{equation}\label{eq:fullsel}
+P(\lam) \;=\; (1-\lam)\, P\!\left[T_{\mathrm{sel1}}\right]
+\;+\; \lam\, P\!\left[T_{\mathrm{union}}\right],
+\qquad P \in \operatorname{sel}(C2) \setminus \operatorname{sel}(C1).
+\end{equation}
+
+The recruitment is \textbf{linear in $\lam$} and \textbf{exact at the
+endpoints} (bitwise): at $\lam = 0$ the item is the canonical
+cluster, at $\lam = 1$ the C2-only parameters reach their
+full-selector realization.  It is strictly confined to the
+C1-incident sub-arcs (outside them
+$T_{\mathrm{sel1}} = T_{\mathrm{union}}$ = canonical, asserted).  For
+a C2 whose selector is a subset of $\operatorname{sel}(C1)$~---
+alveolar /t/, velar /k/,/g/ after /n/~--- the union equals
+$\operatorname{sel}(C1)$ and
+$T_{\mathrm{union}} = T_{\mathrm{sel1}}$ bitwise: the continuum is a
+\textbf{structural no-op}, identical to the v1.2.0 one.  The
+condition therefore only bites where C2 owns articulators that C1
+does not, i.e.\ exactly the labial assimilations (\code{klinpan},
+\code{minbot}, \code{Tinpakit}).
+
+Two realization notes.  (i)~The realized lip distance additionally
+passes through the engine's physiological \textbf{LD floor} in
+\code{AssembleTract}
+($\mathrm{LD} \leftarrow \max(\mathrm{LD},\ \code{LD\_FLOOR})$,
+default $0$: the lips cannot overlap negatively), so the measured
+$\mathrm{LD}(\lam)$ at a fixed frame is the floor-clipped blend~---
+at the C1 lip-closure point of \code{klinpan} the lip opening falls
+$0.65 \to 0.50 \to 0.23 \to \mathbf{0.00}$~cm at
+$\lam = 0/0.5/0.75/1$: the full labial closure, the base model's own
+/p/ value, with protrusion LP $\to 1.08$~cm.  (ii)~The kit records
+three full-selector checks per frame in \code{morph\_meta.json}~---
+\code{fullsel\_confined\_to\_c1\_arcs},
+\code{fullsel\_c2\_only\_recruited} and
+\code{fullsel\_lam1\_c2\_only\_equals\_union}~--- alongside the
+run-time guarantees of \sectref{sec:guarantees}.
+
 \subsection{The tract-blend realization (option)}\label{sec:blendrule}
 
 The v1.0/v1.1 semantics~--- kept as an option~--- realize the same

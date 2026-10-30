@@ -13,7 +13,13 @@ by hash).
    patch/files/  ----installed into----> vtl_synth/core/morphing.py
    (the ONLY lambda code)                 vtl_synth/cli/morph_cmd.py
                             |
-            vtl-synth morph --targets <cluster>
+            vtl-synth morph --targets <cluster>          (lambda v1.2.0:
+                            |                              C1 retargeted,
+                            |                              selector = sel(C1))
+                            v
+            experiments/morphing_fullsel.py               (kit extension,
+            (additive module over the patched engine)      additive module)
+            P(lam) = (1-lam)*P[T_sel1] + lam*P[T_union]
                             |
             .tract / .wav / .polar / morph_meta.json
                             |
@@ -21,7 +27,7 @@ by hash).
       v                     v                     v
   examples/            results/ (verified    demos/ generators
   (reference           external artifacts    (examples/html/)
-  continua, demo          from the campaign   make_*.py
+  continua, demo         from the campaign   make_*.py
   payload builders)       + experiments/)          |
        |                                          v
        +----------------------------------> demos/*.html
@@ -36,8 +42,8 @@ by hash).
 | `patch/` | the λ semantic as an installable engine patch: `apply_patch.py` / `revert_patch.py` + the three installed files and the 53-test suite | a covtl-pipeline checkout at apply time | any engine source; the engine repo never carries λ code |
 | `examples/` | reference-continuum drivers and the demo generators (`html/make_lambda_demo.py`, `html/make_pouw_demos.py`) | the patched engine at build time | the generated demo pages (shipped in `demos/`, gitignored build outputs under `examples/html/`) |
 | `demos/` | self-contained interactive HTML: audio (AAC), tract figures and polar trajectories embedded as base64 at build time | **nothing at run time** — offline, `file://`, no server, no engine, no network | engine code; each page carries the COVTL + VocalTractLab attribution |
-| `results/` | the verified Wav2Vec2 campaign (kit v3.0): machine-readable stats, per-frame morph metadata, figures, the didactic synthesis PDF | nothing (data + documents) | the wav2vec2 checkpoints, the 54 stimulus files (regenerable, hash-pinned in `synth_meta.json`), any third-party audio |
-| `experiments/` | the probing-campaign drivers (synthesis base, feature extraction, probes, statistics, figures, natural-stimuli import) | patched engine for synthesis; optional torch/transformers extra for probing only | probing dependencies in the repository core (never a hard dependency) |
+| `results/` | the verified Wav2Vec2 campaign (kit v3.1, full CC selector): machine-readable stats, per-frame morph metadata, figures, the didactic synthesis PDF | nothing (data + documents) | the wav2vec2 checkpoints, the 54 stimulus files (regenerable, hash-pinned in `synth_meta.json`), any third-party audio |
+| `experiments/` | the probing-campaign drivers (synthesis base, feature extraction, probes, statistics, figures, natural-stimuli import) **plus the kit extension `morphing_fullsel.py`** (the v3.1 full-CC-selector condition as an additive module over the patched engine; the engine patch itself is unchanged) | patched engine for synthesis; optional torch/transformers extra for probing only | probing dependencies in the repository core (never a hard dependency) |
 | `docs/` | reference manual, analysis report, ROADMAP, figures | LaTeX toolchain to rebuild (PDFs are shipped) | build artifacts |
 | `patch/../covtl-lambda-patch_INSTALL_PROMPT.md` | step-by-step install/verify guide with expected outputs | — | — |
 
@@ -52,7 +58,10 @@ by hash).
    the kit-layout `work/` tree.
 3. **Verification gate** — every external artifact enters `results/`
    only after the ROADMAP W4 checks (bitwise synthesis identity,
-   guarantee booleans, SAMPA inventories) and the W5 notation sweep.
+   guarantee booleans, SAMPA inventories), the W5 notation sweep, and
+   (v3.1) the W6 SHA-256 gate against the kit anchors; probabilistic
+   JSON and PDFs are always copied bitwise from the delivered kit,
+   never regenerated locally.
 4. **Notation ladder** — `xC1C2x` (tautosyllabic cluster) is the only
    λ input; `xC1.C2x` (C.C split) and `xC1 C2x` (pause) are different
    syntheses, documented but out of scope; `xC1′C2x` is the λ = 1

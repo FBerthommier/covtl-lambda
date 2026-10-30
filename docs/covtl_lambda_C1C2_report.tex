@@ -117,14 +117,57 @@ The cluster machinery of the engine drives, on every sub-arc of the cluster, the
     \item \textbf{Cluster selector}: $S_{\text{union}} = S_n \cup S_p = \{\text{JA, TCX, TCY, TBX, TBY, TTX, TTY, LD, LP}\}$.
 \end{itemize}
 
-This machinery is part of the engine and is \emph{independent of $\lambda$}: the variation only moves the target coordinates of $C_1$ inside it ($C_1$ keeps its nasal identity --- selector and nasality envelope --- while its target rotates toward the $C_2$ place). For every value of $\lambda$ the trajectory is rebuilt and the full set of 19 anatomical parameters of the vocal tract is recomputed frame by frame (at a rate of $400\text{ Hz}$).
+This machinery is part of the engine and is \emph{independent of $\lambda$}: the variation only moves the target coordinates of $C_1$ inside it ($C_1$ keeps its nasal identity --- selector and nasality envelope --- while its target rotates toward the $C_2$ place; this is the v3.0 campaign condition, superseded by the full-selector recruitment of kit v3.1 described in the next subsection). For every value of $\lambda$ the trajectory is rebuilt and the full set of 19 anatomical parameters of the vocal tract is recomputed frame by frame (at a rate of $400\text{ Hz}$).
 
 \begin{summarybox}[Summary: What $\lambda$ physically represents]
 The $\lambda$ parameter rotates the polar target of the nasal $C_1$ toward the place of $C_2$ inside the fixed cluster machinery ($S_{\text{union}}$). At $\lambda = 0.5$ (reference pair \texttt{klinpan}), the system does not superimpose two sounds; it synthesizes a single hybrid gesture --- a nasalized approximant whose target sits mid-way along the angular path ($\theta = 340^\circ$): the tongue body is already rotating labial-ward (measured at the C1-window midpoint: jaw $-2.29^\circ$ against $-2.32^\circ$ canonical, tongue-tip $x$ $4.23$ cm against $4.78$ cm) while the velum stays wide open.
 \end{summarybox}
 
 \subsection{Levels of description: polar coordination model vs.\ tract-parameter realization}
-The polar $(\rho, \theta)$ formulation is the \emph{ground truth} of the $\lambda$ variation (v1.2.0 of covtl-lambda-patch): \texttt{vtl-synth morph --targets <cluster>} interpolates the $C_1$ polar target and re-synthesizes through the engine's own syllabic builder, so every continuum point is a genuine re-synthesized cluster. The older \emph{motor-level} realization --- frame-wise linear interpolation of the 19 tract parameters, $X_\lambda = (1-\lambda)A + \lambda B$ between two endpoint sequences --- remains available as the blend option; it approximates the target-level definition and was the only mode of the original kit experiment (which synthesized \emph{dotted} C.C forms and blended them; its recorded mid-window articulator values LP $0.214 \to 0.742$, LD $0.600 \to 0.113$, JA $-2.638 \to -3.309$, VO $0.848$ belong to that legacy path). Under the cluster target semantic the measured reference values are: JA $-2.321 \to -3.327$, VO $0.886$ constant, LP/LD carried by the vowel background at the mid-arc probe (tongue-tip and jaw carry the place change; cf.\ the patch manual §6).
+The polar $(\rho, \theta)$ formulation is the \emph{ground truth} of the $\lambda$ variation (v1.2.0 of covtl-lambda-patch): \texttt{vtl-synth morph --targets <cluster>} interpolates the $C_1$ polar target and re-synthesizes through the engine's own syllabic builder, so every continuum point is a genuine re-synthesized cluster. The older \emph{motor-level} realization --- frame-wise linear interpolation of the 19 tract parameters, $X_\lambda = (1-\lambda)A + \lambda B$ between two endpoint sequences --- remains available as the blend option; it approximates the target-level definition and was the only mode of the original kit experiment (which synthesized \emph{dotted} C.C forms and blended them; its recorded mid-window articulator values LP $0.214 \to 0.742$, LD $0.600 \to 0.113$, JA $-2.638 \to -3.309$, VO $0.848$ belong to that legacy path). Under the cluster target semantic the measured reference values are: JA $-2.321 \to -3.327$, VO $0.886$ constant, LP/LD carried by the vowel background at the mid-arc probe (tongue-tip and jaw carry the place change; cf.\ the patch manual §6) --- the v3.0 blocked-lip condition; under kit v3.1 the lips are recruited (next subsection).
+
+\subsection{Update --- the v3.1 full CC selector (kit extension)}
+\label{sec:fullsel-report}
+The v3.0 campaign kept one restriction: under $\lambda$ the retargeted
+$C_1$ carried \emph{its own} selector, so the labial parameters
+LD/LP of a labial $C_2$ --- absent from $\operatorname{sel}(C_1)$ ---
+stayed bitwise constant on the vocalic background (the \emph{lip
+blocking}).  Kit v3.1 (2026-10-30) removes it with an additive module
+over the patched engine (\texttt{experiments/morphing\_fullsel.py};
+the engine patch itself is unchanged): under $\lambda$ variation the
+\textbf{whole CC selector} is taken into account, as in the base
+model.  Per degree the phrase is synthesized twice through the
+engine's own chain --- $T_{\mathrm{sel1}}$ (the v1.2.0 item verbatim)
+and $T_{\mathrm{union}}$ (the same retargeted $C_1$ with its selector
+widened to $S_{\text{union}}$) --- and the C2-only parameters are
+recruited linearly, exact at the endpoints and confined to the
+C1-incident sub-arcs:
+\begin{equation}
+P(\lambda) = (1-\lambda)\,P\!\left[T_{\mathrm{sel1}}\right]
++ \lambda\,P\!\left[T_{\mathrm{union}}\right],
+\qquad P \in \operatorname{sel}(C_2) \setminus \operatorname{sel}(C_1).
+\end{equation}
+For a C2 whose selector is a subset of $\operatorname{sel}(C_1)$
+(alveolar /t/, velar /k/,/g/ after /n/) the union equals
+$\operatorname{sel}(C_1)$: the NV continua are \textbf{structural
+no-ops}, bitwise the v3.0 ones.  The jaw/tongue rotation channel is
+bitwise identical to v3.0 at every degree, and the $\lambda = 0$ and
+NV tiers are bitwise-identical anchors (780/780 probe cells verified
+at integration).  The numbers that changed
+(\texttt{results/CORRECTIONS\_v3.1.md}): the lip opening at the C1
+target point of \texttt{klinpan} now falls $0.61 \to 0.46 \to 0.16
+\to \mathbf{0.00}$~cm at $\lambda = 0/0.5/0.75/1$ (full labial
+closure, the base model's own /p/ value, protrusion LP $\to
+1.08$~cm); the phonetic layers (T2--T4, LOSO 1.00) still read the
+underlying /n/ at every degree --- through the real closure, with no
+T4 category boundary; the inverted $\lambda = 1$ licensed--unlicensed
+contrast becomes \textbf{bilateral} ($-20.5$ and $-17.9$ points, both
+CIs excluding zero, vs.\ one listener only under v3.0); the
+$\lambda = 0.75$ production cells of the CTC-tuned listener do not
+move (79.5 / 89.7, control 64.1); and the late labial reading of P1
+is lost (P(m) at T10--T11: $.44/.53 \to .24/.09$) while P2/P4 keep
+theirs --- the letter-supervised reading tracks the cluster context,
+not the lip closure.
 
 \section{$C_1 C_2$ Sequences: $C_2$ Invariance and Causal Drift of $C_1$}
 
